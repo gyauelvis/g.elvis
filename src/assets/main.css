@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap');
+:root{
+    --black-text-90: #222222e6;
+    --black-text-100: #222222;
+    --poppins: Poppins, 'sans-serif';
+    --play-fair: 'Playfair Display','sans-serif';
+}
+*{
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+
+.wrapper{
+    padding: 0 2rem;
+    
+}
