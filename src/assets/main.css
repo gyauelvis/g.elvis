@@ -1,18 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap');
-:root{
-    --black-text-90: #222222e6;
-    --black-text-100: #222222;
-    --poppins: Poppins, 'sans-serif';
-    --play-fair: 'Playfair Display','sans-serif';
+@font-face {
+  font-family: 'Poppins';
+  src:
+    url('./fonts/poppins-regular-webfont.woff2') format('woff2'),
+    url('./fonts/poppins-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
-*{
-    border: 0;
-    margin: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-  }
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 600;
+  src:
+    url('./fonts/poppins-bold-webfont.woff2') format('woff2'),
+    url('./fonts/poppins-bold-webfont.woff') format('woff');
+}
 
-.wrapper{
-    padding: 0 2rem;
-    
+
+@font-face {
+  font-family: 'Martia';
+  src: url('./fonts/MartianMono_Condensed-Bold.ttf') format('truetype');
+  font-weight: 600;
+}
+
+
+
+:root {
+  --black-text-90: #222222e6;
+  --black-text-100: #222222;
+  --poppins: Poppins, 'sans-serif';
+  --play-fair: Martia, 'sans-serif';
+}
+
+* {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.wrapper {
+  padding: 0 1.8rem;
+}
+
+.char {
+  display: inline-block;
+  transform: translateY(115px);
+  transition: transform 0.5s;
+  -webkit-transition: transform 0.5s;
+  -moz-transition: transform 0.5s;
+  -ms-transition: transform 0.5s;
+  -o-transition: transform 0.5s;
+}
+
+#elvis {
+  word-spacing: 100px;
 }

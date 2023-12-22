@@ -1,6 +1,7 @@
 <script setup>
 import { gsap } from "gsap";
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+
 let splitValue = (id) => {
     let array = [];
     let element = document.getElementById(`${id}`);
@@ -14,16 +15,41 @@ let splitValue = (id) => {
         span.textContent = array[i];
         element.appendChild(span)
     }
+
 }
+
+onMounted(() => {
+    splitValue('elvis');
+    splitValue('gyau');
+    splitValue('boahen');
+    let animation = gsap.timeline();
+    animation
+        .to('.char',
+            {
+                y: 0,
+                stagger: 0.05,
+                delay: 0.2,
+                duration: .1,
+                ease: 'back.inOut(2.7)'
+            })
+        .to('.description div',{
+            y:0,
+            duration: .2,
+            delay: 0.2,
+        })
+
+})
 </script>
 <template>
     <div class="wrapper">
         <div class="brand-name">
             <div>
                 <div class="name">
-                    <span>I'm Elvis</span>
+                    <span id="elvis">I'm Elvis</span>
+                    <div>
                     <span id="gyau">gyau</span>
-                    <span>boahen</span>
+                    <span id="boahen">boahen</span>
+                    </div>
                 </div>
                 <div class="description">
                     <div>I'm a creative software engineer from Ghana - West Africa, who enjoys building interactive
@@ -51,33 +77,33 @@ let splitValue = (id) => {
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path
                             d="M9.50389 18.9109C9.50389 18.9109 8 18.9109 6.5 16.9117M14.0588 22V17.6759C14.0588 17.3125 13.9506 16.9966 13.7762 16.7112C13.6566 16.5155 13.7385 16.2377 13.9547 16.1763C15.7447 15.6681 17 14.851 17 12.1406C17 11.4359 16.7764 10.7734 16.3834 10.1968C16.1879 9.90984 16.1928 9.9364 16.2746 9.59719C16.4183 9.00067 16.4298 8.37225 16.2692 7.78605C16.2164 7.59335 16.1032 7.48096 15.8983 7.50266C15.6326 7.53081 15.1725 7.65663 14.49 8.09692C14.2219 8.26992 14.0878 8.35642 13.9697 8.37577C13.8516 8.39512 13.6938 8.35459 13.378 8.27353C12.9463 8.16268 12.5014 8.10318 12 8.10318C11.4986 8.10318 11.0537 8.16268 10.622 8.27353C10.3062 8.35459 10.1484 8.39512 10.0303 8.37577C9.9122 8.35642 9.77813 8.26992 9.50999 8.09692C8.82753 7.65663 8.3674 7.53081 8.10166 7.50266C7.8968 7.48096 7.78361 7.59335 7.73081 7.78605C7.57017 8.37225 7.58167 9.00069 7.72543 9.5972C7.80718 9.93642 7.81213 9.90984 7.61654 10.1968C7.22356 10.7734 7 11.4359 7 12.1406C7 14.851 8.25526 15.6681 10.0453 16.1763C10.2615 16.2377 10.3434 16.5155 10.2238 16.7112C10.0494 16.9966 9.94118 17.3125 9.94118 17.6759V22"
-                            stroke="#22222290" stroke-width="1.5" />
+                            stroke="#222222" stroke-width="1.5" />
                         <path
                             d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                            stroke="#22222290" stroke-width="1.5" stroke-linejoin="round" />
+                            stroke="#222222" stroke-width="1.5" stroke-linejoin="round" />
                     </svg>
                 </a>
                 <a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path
                             d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z"
-                            stroke="#22222290" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <path
                             d="M7 17L11.1935 12.8065M11.1935 12.8065L7 7H9.77778L12.8065 11.1935M11.1935 12.8065L14.2222 17H17L12.8065 11.1935M17 7L12.8065 11.1935"
-                            stroke="#22222290" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </a>
                 <a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M7 10V17" stroke="#22222290" stroke-width="1.5" stroke-linecap="round"
+                        <path d="M7 10V17" stroke="#222222" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
                         <path d="M11 13V17M11 13C11 11.3431 12.3431 10 14 10C15.6569 10 17 11.3431 17 13V17M11 13V10"
-                            stroke="#22222290" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M7.00801 7H6.99902" stroke="#22222290" stroke-width="2" stroke-linecap="round"
+                            stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M7.00801 7H6.99902" stroke="#222222" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" />
                         <path
                             d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z"
-                            stroke="#22222290" stroke-width="1.5" stroke-linejoin="round" />
+                            stroke="#222222" stroke-width="1.5" stroke-linejoin="round" />
                     </svg>
                 </a>
             </div>
@@ -92,9 +118,8 @@ let splitValue = (id) => {
     flex-direction: row;
     align-items: flex-end;
     gap: 2rem;
-    padding: 0 2rem 30% 2rem;
+    padding: 0 1.8rem 30% 1.8rem;
 }
-
 
 .s-media {
     display: flex;
@@ -105,13 +130,19 @@ let splitValue = (id) => {
 
 .brand-name div>span {
     font-family: var(--play-fair);
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     font-weight: 600;
     text-transform: uppercase;
     display: block;
     line-height: normal;
-    color: var(--black-text-100);
+    color: var(--black-text-90);
     text-align: right;
+    clip-path: polygon(0 0, 100% 2%, 100% 100%, 0% 100%);
+    white-space: nowrap;
+}
+
+.description {
+    clip-path: polygon(0 0, 100% 2%, 100% 100%, 0% 100%);
 }
 
 .description div {
@@ -119,6 +150,9 @@ let splitValue = (id) => {
     font-size: 0.8rem;
     padding: 1rem 0.5rem;
     text-align: right;
+    line-height: 1.1rem;
+    transition: transform 200ms ease-in-out;
+    transform: translateY(150px);
 }
 
 .s-media:before,
@@ -180,4 +214,67 @@ div :has(a)>a {
     border: 1px solid #9D9B96;
     background: rgba(217, 217, 217, 0.00);
     padding: 0.4rem;
-}</style>
+}
+
+@media screen and (min-width: 550px) {
+    .wrapper {
+        max-width: 650px;
+    }
+
+    .brand-name div>span {
+        font-size: 6rem;
+    }
+
+    .description div {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+    }
+
+    div :has(a)>a {
+        font-size: 1.8rem;
+    }
+
+    .proj svg {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .resume {
+        padding: 1rem;
+    }
+
+    .s-media div a svg {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .wrapper {
+        max-width: 1000px;
+        padding: 0 1.8rem 00% 1.8rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .brand-name div>span {
+        text-align: left;
+    }
+    .description div {
+        text-align: left;
+        width: 70%;
+    }
+    .name{
+        display: flex;
+        flex-direction: column;
+    }
+    .name div{
+        display: flex;
+        gap: 1rem;
+    }
+    .call-to-action {
+        justify-content: flex-start;
+    }
+}
+</style> 

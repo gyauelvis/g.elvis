@@ -13,9 +13,13 @@
 <style scoped>
 
 .app-container{
-  background-image: url('gradient-bg.png');
+  background-image: url('gradient-bg.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 </style>

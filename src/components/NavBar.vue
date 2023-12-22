@@ -44,4 +44,10 @@
     content: ' />';
 }
 
+@media screen and (min-width: 550px) and (max-width: 1000px) {
+    .nav-bar{
+        max-width: 700px;
+    }
+}
+
 </style>
