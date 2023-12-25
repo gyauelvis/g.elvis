@@ -35,6 +35,11 @@
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
+  cursor: none;
+}
+
+*:not(svg){
+  overflow: hidden;
 }
 
 .wrapper {

@@ -19,6 +19,7 @@ let splitValue = (id) => {
 }
 
 onMounted(() => {
+    splitValue('im');
     splitValue('elvis');
     splitValue('gyau');
     splitValue('boahen');
@@ -32,10 +33,17 @@ onMounted(() => {
                 duration: .1,
                 ease: 'back.inOut(2.7)'
             })
-        .to('.description div',{
-            y:0,
+        .to('.description div', {
+            y: 0,
             duration: .2,
             delay: 0.2,
+        }).fromTo('#myImage',{
+            duration:.5,
+            opacity:0
+        },{
+            opacity:1,
+            delay: 0.3,
+            ease: 'back.out'
         })
 
 })
@@ -45,10 +53,14 @@ onMounted(() => {
         <div class="brand-name">
             <div>
                 <div class="name">
-                    <span id="elvis">I'm Elvis</span>
                     <div>
-                    <span id="gyau">gyau</span>
-                    <span id="boahen">boahen</span>
+                        <span id="im">I'm</span>
+                        <img src="/public/gelvis.jpg" alt="" title="yep, that me" id="myImage">
+                        <span id="elvis">Elvis</span>
+                    </div>
+                    <div>
+                        <span id="gyau">gyau</span>
+                        <span id="boahen">boahen</span>
                     </div>
                 </div>
                 <div class="description">
@@ -106,6 +118,9 @@ onMounted(() => {
                             stroke="#222222" stroke-width="1.5" stroke-linejoin="round" />
                     </svg>
                 </a>
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M232,56H24A16,16,0,0,0,8,72V184a16,16,0,0,0,16,16H232a16,16,0,0,0,16-16V72A16,16,0,0,0,232,56Zm0,128H24V72H232V184ZM128,104v16h8a8,8,0,0,1,0,16h-8v16h16a8,8,0,0,1,0,16H120a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8h24a8,8,0,0,1,0,16Zm87.7-5.83-18,64a8,8,0,0,1-15.4,0l-18-64a8,8,0,0,1,15.4-4.34L190,130.45l10.3-36.62a8,8,0,1,1,15.4,4.34ZM64,88H56a8,8,0,0,0-8,8v64a8,8,0,0,0,8,8h8a32,32,0,0,0,32-32V120A32,32,0,0,0,64,88Zm16,48a16,16,0,0,1-16,16V104a16,16,0,0,1,16,16Z"></path></svg>
+                </a>
             </div>
         </div>
 
@@ -114,6 +129,7 @@ onMounted(() => {
 <style scoped>
 .wrapper {
     height: calc(100vh - 4rem);
+    max-height: 1000px;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -127,7 +143,23 @@ onMounted(() => {
     align-items: center;
     justify-content: center;
 }
+.s-media a:hover svg{
+    padding: 0;
+    transition: all 0.5s ease-in-out;
+    scale: 1.05;
+}
 
+.name div{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.name div:has(#gyau){
+    flex-direction: column;
+}
+.name div:has(#im){
+    gap: 0.5rem;
+}
 .brand-name div>span {
     font-family: var(--play-fair);
     font-size: 3.3rem;
@@ -178,6 +210,10 @@ div :has(a)>a {
     color: var(--black-text-90);
     font-weight: 700;
     font-size: 1rem;
+}
+
+div:has(#elvis)>img{
+    display: none;
 }
 
 .call-to-action {
@@ -261,20 +297,36 @@ div :has(a)>a {
     .brand-name div>span {
         text-align: left;
     }
+
     .description div {
         text-align: left;
         width: 70%;
     }
-    .name{
+
+    .name {
         display: flex;
         flex-direction: column;
     }
-    .name div{
+
+    .name div {
         display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
         gap: 1rem;
     }
+    .name div:has(#gyau){
+        flex-direction: row;
+    }
+
     .call-to-action {
         justify-content: flex-start;
     }
-}
-</style> 
+    div:has(#elvis)>img{
+        display: block;
+        width: 10rem;
+        border-radius: 15px;
+    }
+    div :has(a)>a {
+        font-size: 1.5rem;
+    }
+}</style>
