@@ -14,14 +14,11 @@
     url('./fonts/poppins-bold-webfont.woff') format('woff');
 }
 
-
 @font-face {
   font-family: 'Martia';
   src: url('./fonts/MartianMono_Condensed-Bold.ttf') format('truetype');
   font-weight: 600;
 }
-
-
 
 :root {
   --black-text-90: #222222e6;
@@ -29,17 +26,15 @@
   --poppins: Poppins, 'sans-serif';
   --play-fair: Martia, 'sans-serif';
 }
-
+body {
+  overflow-x: hidden;
+}
 * {
   border: 0;
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
   cursor: none;
-}
-
-*:not(svg){
-  overflow: hidden;
 }
 
 .wrapper {
@@ -56,6 +51,7 @@
   -o-transition: transform 0.5s;
 }
 
-#elvis {
-  word-spacing: 100px;
+.nav-bar span:hover, .nav-bar a:hover{
+  cursor: pointer;
 }
+

@@ -138,6 +138,8 @@ onMounted(() => {
 }
 
 .s-media {
+    position: relative;
+    z-index: 9;
     display: flex;
     flex-direction: column;
     align-items: center;

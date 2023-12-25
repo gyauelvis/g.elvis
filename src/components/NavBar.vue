@@ -18,6 +18,8 @@
 .nav{
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 10;
 }
 .nav-bar{
     display: flex;
