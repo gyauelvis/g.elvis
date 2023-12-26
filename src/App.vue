@@ -23,20 +23,18 @@ document.addEventListener('mousemove', (e) => {
 
 <template>
   <div class="app-container">
-    <div class="cursor"></div>
-    <div class="cursorDot"></div>
-    <nav-bar></nav-bar>
-    <hero-page></hero-page>
-    <my-stack></my-stack>
+    <div>
+      <div class="cursor"></div>
+      <div class="cursorDot"></div>
+      <nav-bar></nav-bar>
+      <hero-page></hero-page>
+      <my-stack></my-stack>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .app-container {
-  background-image: url('gradient-bg.webp');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,13 +43,14 @@ document.addEventListener('mousemove', (e) => {
 .cursor {
   width: 50px;
   height: 50px;
+  transition: all 0.05s ease-in-out;
   background-color: #ECE4B7;
   opacity: 70%;
 }
 
 .cursorDot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background-color: var(--black-text-100);
 }
 

@@ -28,6 +28,10 @@
 }
 body {
   overflow-x: hidden;
+  background-image: url('gradient-bg.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 * {
   border: 0;
@@ -36,6 +40,8 @@ body {
   text-decoration: none;
   cursor: none;
 }
+
+
 
 .wrapper {
   padding: 0 1.8rem;

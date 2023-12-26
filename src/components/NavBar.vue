@@ -5,9 +5,9 @@
 <template>
     <div class="nav">
         <div class="nav-bar">
-            <span>
+            <a href='#'>
                 g.elvis
-            </span>
+            </a>
             <a href="#">say hello</a>
         </div>
     </div>
