@@ -132,7 +132,7 @@ div:has(h2) h2 {
     display: flex;
     width: 100%;
     flex-direction: row;
-    gap: 1rem;
+    justify-content: space-between;
     max-width: 1000px;
     overflow: hidden;
     padding: 1rem 0;
