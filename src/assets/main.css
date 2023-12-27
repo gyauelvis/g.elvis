@@ -28,7 +28,7 @@
 }
 body {
   overflow-x: hidden;
-  background-image: url('gradient-bg.webp');
+  background-image: url('/src/img/gradient-bg.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -60,4 +60,5 @@ body {
 .nav-bar span:hover, .nav-bar a:hover{
   cursor: pointer;
 }
+
 

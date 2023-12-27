@@ -55,7 +55,7 @@ onMounted(() => {
                 <div class="name">
                     <div>
                         <span id="im">I'm</span>
-                        <img src="/public/gelvis.jpg" alt="" title="yep, that me" id="myImage">
+                        <img src="/src/img/gelvis.jpg" alt="" title="yep, that me" id="myImage">
                         <span id="elvis">Elvis</span>
                     </div>
                     <div>
