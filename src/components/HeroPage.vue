@@ -235,8 +235,9 @@ div:has(#elvis)>img {
     position: relative;
     z-index: 10;
 }
-.call-to-action a:hover{
-    cursor:pointer;
+
+.call-to-action a:hover {
+    cursor: pointer;
 }
 
 .proj {
@@ -348,4 +349,5 @@ div:has(#elvis)>img {
     div :has(a)>a {
         font-size: 1.5rem;
     }
-}</style>
+}
+</style>

@@ -1,7 +1,7 @@
 <script setup>
 import navBar from './components/NavBar.vue'
 import heroPage from './components/HeroPage.vue'
-import myStack from './components/MyStack.vue';
+import myStack from './components/MyStack.vue'
 import { gsap } from "gsap";
 document.addEventListener('mousemove', (e) => {
   let cursorDot = document.querySelector('.cursorDot');
