@@ -1,5 +1,21 @@
 <script setup>
+import { onMounted } from 'vue';
 
+let addAnimation = () => {
+    let stackContainer = document.querySelectorAll('.stack-container');
+    stackContainer.forEach(container => {
+        let duplicatedItems = Array.from(container.children);
+        duplicatedItems.forEach(item => {
+            let contentDup = item.cloneNode(true);
+            contentDup.setAttribute('aria-hidden', true);
+            container.appendChild(contentDup);
+        })
+    });
+
+}
+onMounted(() => {
+    addAnimation();
+})
 </script>
 
 <template>
@@ -284,6 +300,7 @@
     -webkit-mask: linear-gradient(90deg, transparent, #fff 20%, white 90%, transparent);
     mask: linear-gradient(90deg, transparent, #fff 10%, white 90%, transparent);
 }
+
 .stack-container {
     padding: 1rem 0;
     position: absolute;
@@ -293,8 +310,8 @@
 }
 
 @keyframes scroll {
-    to{
-        transform: translateX(-50%);
+    to {
+        transform: translateX(calc(-50% - .5rem));
     }
 }
 
@@ -303,14 +320,14 @@
     height: 54px;
 }
 
-.heading h2{
+.heading h2 {
     font-family: var(--play-fair);
     display: flex;
     align-items: center;
     padding: 1rem 0;
 }
 
-.subheading{
+.subheading {
     font-family: var(--poppins);
     font-size: 0.8rem;
     line-height: 1.1rem;
