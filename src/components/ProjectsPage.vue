@@ -25,7 +25,7 @@ defineProps({
 </script>
 <template>
     <div class="project">
-        <div class="container">
+        <div class="projContainer">
             <div class="name-code">
                 <h2>{{ projectName }}</h2>
                 <a :href="linkToGithub">CODE</a>
@@ -41,11 +41,11 @@ defineProps({
 </template>
 
 <style scoped>
-.container {
+.projContainer {
     display: flex;
     flex-direction: column;
     border: 1px solid #9D9B96;
-
+    min-width: 20rem;
     .name-code {
         color: rgba(34, 34, 34, 0.90);
         font-family: var(--poppins);
@@ -86,5 +86,13 @@ defineProps({
     text-transform: uppercase;
     height: 100%;
     padding: 1rem 0.5rem;
+}
+
+
+@media screen and (min-width: 540px) {
+  .projContainer{
+    width: 20rem;
+    height: fit-content;
+  }
 }
 </style>

@@ -4,6 +4,7 @@ import heroPage from './components/HeroPage.vue'
 import myStack from './components/MyStack.vue'
 import { gsap } from "gsap";
 import projectsTemplate from './components/ProjectsPage.vue'
+import { onMounted } from 'vue';
 
 document.addEventListener('mousemove', (e) => {
   let cursorDot = document.querySelector('.cursorDot');
@@ -19,6 +20,20 @@ document.addEventListener('mousemove', (e) => {
   })
 })
 
+onMounted(() => {
+  let projectContainer = document.querySelector('.projects-container');
+  let intervalId;
+  projectContainer.addEventListener('scroll', (e) => {
+    if (projectContainer.scrollLeft > 0) {
+      e.preventDefault();
+      intervalId = setInterval(() => {
+        console.log(document.querySelectorAll('.projContainer'));
+      }, 500)
+    }else{
+      clearInterval(intervalId);
+    }
+  })
+})
 
 
 </script>
@@ -57,6 +72,19 @@ document.addEventListener('mousemove', (e) => {
             <projects-template project-name="Word Haven INT. website"
               project-description="Built a static web page with html, css and javascript"
               project-image="/projImg/wordhaven.jpg"></projects-template>
+
+            <projects-template project-name="Tonaton estate clone"
+              project-description="Built a tonaton estate clone with html, tailwindcss and javascript"
+              project-image="/projImg/tonaton.jpg"></projects-template>
+
+            <projects-template project-name="DevQuiz"
+              project-description="Built a quiz app that ask questions on various programming languages"
+              project-image="/projImg/devquiz.jpeg"></projects-template>
+
+            <projects-template project-name="Dictionary"
+              project-description="Built a dictionary app with html, css and Js"
+              project-image="/projImg/dictionary.jpg"></projects-template>
+
           </div>
         </div>
       </div>
@@ -117,7 +145,23 @@ document.addEventListener('mousemove', (e) => {
   line-height: 1.1rem;
 }
 
-.projects-container{
+.projects {
+  position: relative;
+  height: 30rem;
+}
+
+.projects-container {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  overflow-x: scroll;
+  gap: 1rem;
   padding: 1rem 0;
+}
+
+.projects-container::-webkit-scrollbar {
+  height: 0;
+  background-color: transparent;
 }
 </style>
