@@ -45,7 +45,7 @@ defineProps({
     display: flex;
     flex-direction: column;
     border: 1px solid #9D9B96;
-    min-width: 20rem;
+    width: 100%;
     .name-code {
         color: rgba(34, 34, 34, 0.90);
         font-family: var(--poppins);
