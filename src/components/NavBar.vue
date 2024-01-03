@@ -22,7 +22,7 @@
     top: 0;
     z-index: 10;
     width: 100%;
-    background-image: url('/src/assets/img/gradient-bg.webp');
+    background-image: url('/assets/img/gradient-bg.webp');
     opacity: 0.9;
 }
 .nav-bar{
