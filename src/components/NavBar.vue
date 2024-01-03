@@ -18,8 +18,12 @@
 .nav{
     display: flex;
     justify-content: center;
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 10;
+    width: 100%;
+    background-image: url('/src/img/gradient-bg.webp');
+    opacity: 0.9;
 }
 .nav-bar{
     display: flex;
@@ -38,6 +42,7 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 20px;
+    opacity: 1;
 }
 .nav-bar span::before{
     content: '<';

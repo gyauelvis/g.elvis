@@ -324,12 +324,16 @@ onMounted(() => {
     font-family: var(--play-fair);
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
     padding: 1rem 0;
+    color: var(--black-text);
 }
 
 .subheading {
     font-family: var(--poppins);
     font-size: 0.8rem;
     line-height: 1.1rem;
+    color: var(--black-text);
 }
 </style>
