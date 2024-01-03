@@ -21,21 +21,10 @@ document.addEventListener('mousemove', (e) => {
 })
 
 onMounted(() => {
-  let projectContainer = document.querySelector('.projects-container');
-  let intervalId;
-  projectContainer.addEventListener('scroll', (e) => {
-    if (projectContainer.scrollLeft > 0) {
-      e.preventDefault();
-      intervalId = setInterval(() => {
-        console.log(document.querySelectorAll('.projContainer'));
-      }, 500)
-    }else{
-      clearInterval(intervalId);
-    }
+  document.querySelector('.projects-container').addEventListener('scroll', () => {
+    console.log(document.querySelector('.projects-container').scrollLeft);
   })
 })
-
-
 </script>
 
 <template>
@@ -84,7 +73,11 @@ onMounted(() => {
             <projects-template project-name="Dictionary"
               project-description="Built a dictionary app with html, css and Js"
               project-image="/projImg/dictionary.jpg"></projects-template>
-
+          </div>
+          <div class="scrollBtns">
+            <div class="longHoriz"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
           </div>
         </div>
       </div>
@@ -163,5 +156,30 @@ onMounted(() => {
 .projects-container::-webkit-scrollbar {
   height: 0;
   background-color: transparent;
+}
+
+.scrollBtns {
+  position: absolute;
+  top: 26rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0.2rem;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #222;
+  background-color: rgba(34, 34, 34, 0.9);
+}
+
+.longHoriz {
+  width: 50px;
+  height: 10px;
+  border-radius: 2rem;
+  background-color: rgba(34, 34, 34, 0.9);
 }
 </style>
