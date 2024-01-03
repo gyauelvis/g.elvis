@@ -116,4 +116,8 @@ document.addEventListener('mousemove', (e) => {
   font-size: 0.8rem;
   line-height: 1.1rem;
 }
+
+.projects-container{
+  padding: 1rem 0;
+}
 </style>

@@ -67,6 +67,7 @@ defineProps({
         font-size: 0.8rem;
         line-height: 1.1rem;
         padding: 1rem;
+        border-top: 1px solid #9D9B96;
     }
 
 }
