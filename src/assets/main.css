@@ -28,7 +28,7 @@
 }
 body {
   overflow-x: hidden;
-  background-image: url('/src/img/gradient-bg.webp');
+  background-image: url('/src/assets/img/gradient-bg.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

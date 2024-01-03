@@ -56,7 +56,7 @@ document.addEventListener('mousemove', (e) => {
           <div class="projects-container">
             <projects-template project-name="Word Haven INT. website"
               project-description="Built a static web page with html, css and javascript"
-              project-image="/src/img/wordhaven.jpg"></projects-template>
+              project-image="/src/assets/img/wordhaven.jpg"></projects-template>
           </div>
         </div>
       </div>
