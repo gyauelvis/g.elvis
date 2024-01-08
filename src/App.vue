@@ -19,21 +19,27 @@ document.addEventListener('mousemove', (e) => {
     top: `${e.pageY - 20}px`
   })
 })
-let longHorizWidth = 53;
-
+let previousScrollTime = 0;
 let previousScrollValue = 0;
+let addValue = 10;
+let longHorizWidth = 53;
 
 let animatedProjectScroller = () => {
   if (window.innerWidth >= 1000) {
-    let initialState = document.querySelector('.projects-container').scrollLeft;
+    let currentState = document.querySelector('.projects-container').scrollLeft;
+    let currentTime = Date.now();
+    let deltaTime = (currentTime - previousScrollTime);
+    let deltaValue = currentState - previousScrollValue;
+    let speed = (deltaValue / deltaTime);
     let animation = gsap.timeline();
-    if (initialState > 50) {
-      let valueChangeBy = initialState - previousScrollValue;
-      longHorizWidth -= valueChangeBy / 8.2;
+    if (currentState > 50) {
+      console.log(speed);
+      addValue += speed / 2.2;
+      longHorizWidth -= speed / 2.2;
       animation
         .to('.circle', {
           duration: .05,
-          width: initialState / 7.2,
+          width: addValue ,
           borderRadius: '2rem',
           ease: 'linear'
         })
@@ -41,7 +47,7 @@ let animatedProjectScroller = () => {
           width: longHorizWidth,
           duration: .05,
         })
-    } else if (initialState <= 50) {
+    } else if (currentState <= 50) {
       animation.to('.circle', {
         duration: .0,
         width: 10,
@@ -52,9 +58,11 @@ let animatedProjectScroller = () => {
         width: 50,
       })
     }
-    previousScrollValue = initialState;
+    previousScrollValue = currentState;
+    previousScrollTime = currentTime;
   }
 }
+
 </script>
 
 <template>
