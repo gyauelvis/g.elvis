@@ -22,6 +22,8 @@ defineProps({
     }
 
 })
+
+
 </script>
 <template>
     <div class="project">

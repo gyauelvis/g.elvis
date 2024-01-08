@@ -19,12 +19,42 @@ document.addEventListener('mousemove', (e) => {
     top: `${e.pageY - 20}px`
   })
 })
+let longHorizWidth = 53;
 
-onMounted(() => {
-  document.querySelector('.projects-container').addEventListener('scroll', () => {
-    console.log(document.querySelector('.projects-container').scrollLeft);
-  })
-})
+let previousScrollValue = 0;
+
+let animatedProjectScroller = () => {
+  if (window.innerWidth >= 1000) {
+    let initialState = document.querySelector('.projects-container').scrollLeft;
+    let animation = gsap.timeline();
+    if (initialState > 50) {
+      let valueChangeBy = initialState - previousScrollValue;
+      longHorizWidth -= valueChangeBy / 8.2;
+      animation
+        .to('.circle', {
+          duration: .05,
+          width: initialState / 7.2,
+          borderRadius: '2rem',
+          ease: 'linear'
+        })
+        .to('.longHoriz', {
+          width: longHorizWidth,
+          duration: .05,
+        })
+    } else if (initialState <= 50) {
+      animation.to('.circle', {
+        duration: .0,
+        width: 10,
+        borderRadius: '50%'
+      })
+      .to('.longHoriz',{
+        duration: .0,
+        width: 50,
+      })
+    }
+    previousScrollValue = initialState;
+  }
+}
 </script>
 
 <template>
@@ -57,7 +87,7 @@ onMounted(() => {
               Check out a few of the projects I have worked on with the skills I have learnt
             </span>
           </div>
-          <div class="projects-container">
+          <div class="projects-container" @scroll='animatedProjectScroller'>
             <projects-template project-name="Word Haven INT. website"
               project-description="Built a static web page with html, css and javascript"
               project-image="/projImg/wordhaven.jpg"></projects-template>
@@ -76,7 +106,6 @@ onMounted(() => {
           </div>
           <div class="scrollBtns">
             <div class="longHoriz"></div>
-            <div class="circle"></div>
             <div class="circle"></div>
           </div>
         </div>
