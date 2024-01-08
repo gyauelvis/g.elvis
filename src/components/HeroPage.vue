@@ -55,7 +55,7 @@ onMounted(() => {
                 <div class="name">
                     <div>
                         <span id="im">I'm</span>
-                        <img src="/src/assets/img/gelvis.jpg" alt="" title="yep, that me" id="myImage">
+                        <!-- <img src="/src/assets/img/gelvis.jpg" alt="" title="yep, that me" id="myImage"> -->
                         <span id="elvis">Elvis</span>
                     </div>
                     <div>
@@ -236,6 +236,11 @@ div:has(#elvis)>img {
     z-index: 10;
 }
 
+.call-to-action{
+    font-family: var(--play-fair);
+    color: var(--black-text-90);
+}
+
 .call-to-action a:hover {
     cursor: pointer;
 }
@@ -244,6 +249,7 @@ div:has(#elvis)>img {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--black-text-90);
 }
 
 .proj svg {
@@ -267,6 +273,7 @@ div:has(#elvis)>img {
     border: 1px solid #9D9B96;
     background: rgba(217, 217, 217, 0.00);
     padding: 0.4rem;
+    color: var(--black-text-90);
 }
 
 @media screen and (min-width: 550px) {
