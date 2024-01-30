@@ -49,9 +49,11 @@ defineProps({
     border: 1px solid #9D9B96;
     width: 100%;
     min-width: 20rem;
+    scroll-snap-align: center;
+    
     .name-code {
         color: rgba(34, 34, 34, 0.90);
-        font-family: var(--poppins);
+        font-family: var(--play-fair);
         font-weight: 600;
         width: 100%;
         display: flex;
@@ -60,6 +62,11 @@ defineProps({
         justify-content: space-between;
         border-bottom: 1px solid #9D9B96;
         padding: 0 0.5rem;
+
+        a{
+            color: rgba(34, 34, 34, 0.90);
+            font-family: var(--play-fair);
+        }
     }
 
     .projectDescription {

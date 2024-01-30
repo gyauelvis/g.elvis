@@ -39,7 +39,7 @@ let animatedProjectScroller = () => {
       animation
         .to('.circle', {
           duration: .05,
-          width: addValue ,
+          width: addValue,
           borderRadius: '2rem',
           ease: 'linear'
         })
@@ -53,16 +53,20 @@ let animatedProjectScroller = () => {
         width: 10,
         borderRadius: '50%'
       })
-      .to('.longHoriz',{
-        duration: .0,
-        width: 50,
-      })
+        .to('.longHoriz', {
+          duration: .0,
+          width: 50,
+        })
     }
     previousScrollValue = currentState;
     previousScrollTime = currentTime;
   }
 }
-
+onMounted(() => {
+  document.addEventListener('scroll', () => {
+    document.querySelector('.nav').style.backdropFilter = 'blur(5px)';
+  })
+})
 </script>
 
 <template>
@@ -98,19 +102,23 @@ let animatedProjectScroller = () => {
           <div class="projects-container" @scroll='animatedProjectScroller'>
             <projects-template project-name="Word Haven INT. website"
               project-description="Built a static web page with html, css and javascript"
-              project-image="/projImg/wordhaven.jpg"></projects-template>
+              project-image="/projImg/wordhaven.jpg" project-link="https://wordhaven-international-church.vercel.app/"
+              link-to-github="https://github.com/WordHaven-Website/WordHaven"></projects-template>
 
             <projects-template project-name="Tonaton estate clone"
               project-description="Built a tonaton estate clone with html, tailwindcss and javascript"
-              project-image="/projImg/tonaton.jpg"></projects-template>
+              project-image="/projImg/tonaton.jpg" project-link="https://tonaton-estate.vercel.app/"
+              link-to-github="https://github.com/gyauelvis/tonaton-estate"></projects-template>
 
             <projects-template project-name="DevQuiz"
               project-description="Built a quiz app that ask questions on various programming languages"
-              project-image="/projImg/devquiz.jpeg"></projects-template>
+              project-image="/projImg/devquiz.jpeg" project-link="https://devquiz-peach.vercel.app/"
+              link-to-github="https://github.com/gyauelvis/devQuiz"></projects-template>
 
             <projects-template project-name="Dictionary"
-              project-description="Built a dictionary app with html, css and Js"
-              project-image="/projImg/dictionary.jpg"></projects-template>
+              project-description="Built a dictionary app with html, css and Js" project-image="/projImg/dictionary.jpg"
+              project-link="https://dictionarygelvis.vercel.app/"
+              link-to-github="https://github.com/gyauelvis/dictionary"></projects-template>
           </div>
           <div class="scrollBtns">
             <div class="longHoriz"></div>
@@ -188,10 +196,14 @@ let animatedProjectScroller = () => {
   overflow-x: scroll;
   gap: 1rem;
   padding: 1rem 0;
+  scroll-snap-type: x mandatory;
 }
+
+
 
 .projects-container::-webkit-scrollbar {
   height: 0;
+  width: 0;
   background-color: transparent;
 }
 

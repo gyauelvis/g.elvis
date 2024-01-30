@@ -27,13 +27,12 @@
   --play-fair: Martia, 'sans-serif';
 }
 body {
-  overflow-x: hidden!important;
+  overflow-x: hidden !important;
   width: 100vw;
   background-image: url('/src/assets/img/gradient-bg.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-
 }
 * {
   border: 0;
@@ -56,9 +55,15 @@ body {
   -o-transition: transform 0.5s;
 }
 
-.nav-bar span:hover, .nav-bar a:hover{
+.nav-bar span:hover,
+.nav-bar a:hover {
   cursor: pointer;
 }
 
+.projects-container {
+  scroll-snap-type: x mandatory;
+}
 
-
+.projContainer {
+  scroll-snap-align: center;
+}
