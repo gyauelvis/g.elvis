@@ -9,9 +9,9 @@ let cursorDot = document.querySelector('.cursorDot')
 
 let hover = () => {
   cursorDot.style.opacity = 0
-  cursor.style.backgroundColor = '#fff'
-  cursor.style.width = '80px'
-  cursor.style.height = '80px'
+  cursor.style.backgroundColor = '#FFC971'
+  cursor.style.width = '90px'
+  cursor.style.height = '90px'
 }
 let mouseLeave = () => {
   cursorDot.style.opacity = 1
@@ -20,26 +20,19 @@ let mouseLeave = () => {
   cursor.style.height = '50px'
 }
 
-document.querySelectorAll('.nav-bar a').forEach((ele) => {
+document.querySelectorAll('a').forEach((ele) => {
   ele.addEventListener('mouseenter', hover)
 })
 
-document.querySelectorAll('.nav-bar a').forEach((ele) => {
-  ele.addEventListener('mouseleave', mouseLeave)
-})
-document.querySelectorAll('.s-media a').forEach((ele) => {
-  ele.addEventListener('mouseenter', hover)
-  ele.style.cursor = 'pointer'
-})
-document.querySelectorAll('.s-media a').forEach((ele) => {
+document.querySelectorAll('a').forEach((ele) => {
   ele.addEventListener('mouseleave', mouseLeave)
 })
 
-document.querySelectorAll('.call-to-action a').forEach((ele) => {
-  ele.addEventListener('mouseenter', hover)
-})
-document.querySelectorAll('.call-to-action a').forEach((ele) => {
-  ele.addEventListener('mouseleave', mouseLeave)
-})
+// document.querySelectorAll('.cover-image').forEach(ele=>{
+//   ele.addEventListener('click',(e)=>{
+//     e.preventDefault();
+//   })
+// })
+
 
 

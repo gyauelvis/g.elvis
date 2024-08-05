@@ -33,7 +33,6 @@ let animatedProjectScroller = () => {
     let speed = (deltaValue / deltaTime);
     let animation = gsap.timeline();
     if (currentState > 50) {
-      console.log(speed);
       addValue += speed / 2.2;
       longHorizWidth -= speed / 2.2;
       animation
@@ -100,12 +99,17 @@ onMounted(() => {
             </span>
           </div>
           <div class="projects-container" @scroll='animatedProjectScroller'>
-            <projects-template project-name="Word Haven INT. website"
-              project-description="Built a static web page with html, css and javascript"
+            <projects-template project-name="Dbex"
+              project-description="Connect and Query your database with Dbex, A nextjs fullstack app"
+              project-image="/projImg/dbexproject_screenshot_dark.webp" project-link="https://dbexproject.vercel.app/"
+              link-to-github="https://github.com/jdboachie/dbex"></projects-template>
+
+            <projects-template project-name="WordHaven"
+              project-description="A website for the WordHaven international church built with HTML, CSS and JavaScript"
               project-image="/projImg/wordhaven.jpg" project-link="https://wordhaven-international-church.vercel.app/"
               link-to-github="https://github.com/WordHaven-Website/WordHaven"></projects-template>
 
-            <projects-template project-name="Tonaton estate clone"
+            <projects-template project-name="Tonaton Clone"
               project-description="Built a tonaton estate clone with html, tailwindcss and javascript"
               project-image="/projImg/tonaton.jpg" project-link="https://tonaton-estate.vercel.app/"
               link-to-github="https://github.com/gyauelvis/tonaton-estate"></projects-template>
@@ -179,7 +183,7 @@ onMounted(() => {
   font-family: var(--poppins);
   font-style: normal;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   line-height: 1.1rem;
 }
 
@@ -195,11 +199,9 @@ onMounted(() => {
   flex-direction: row;
   overflow-x: scroll;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 2rem 0;
   scroll-snap-type: x mandatory;
 }
-
-
 
 .projects-container::-webkit-scrollbar {
   height: 0;

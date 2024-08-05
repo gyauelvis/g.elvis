@@ -8,7 +8,7 @@
             <a href='#'>
                 g.elvis
             </a>
-            <a href="#">say hello</a>
+            <a href="mailto:gyauelvis@gmail.com">say hello</a>
         </div>
     </div>
 </template>
@@ -20,7 +20,7 @@
     justify-content: center;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 99;
     width: 100%;
     background-image: url('/assets/img/gradient-bg.webp');
     opacity: 0.9;

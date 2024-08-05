@@ -25,6 +25,7 @@
   --black-text-100: #222222;
   --poppins: Poppins, 'sans-serif';
   --play-fair: Martia, 'sans-serif';
+  scroll-behavior: smooth;
 }
 body {
   overflow-x: hidden !important;
@@ -67,3 +68,5 @@ body {
 .projContainer {
   scroll-snap-align: start;
 }
+
+

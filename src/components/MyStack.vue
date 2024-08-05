@@ -297,27 +297,34 @@ onMounted(() => {
     overflow: hidden;
     display: flex;
     width: 98%;
+    padding: 1rem 0;
     -webkit-mask: linear-gradient(90deg, transparent, #fff 20%, white 90%, transparent);
     mask: linear-gradient(90deg, transparent, #fff 10%, white 90%, transparent);
 }
+
 
 .stack-container {
     padding: 1rem 0;
     position: absolute;
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     animation: scroll 10s linear infinite;
+}
+
+.wrapper{
+    padding-top: 1rem;
+    padding: 1rem;
 }
 
 @keyframes scroll {
     to {
-        transform: translateX(calc(-50% - .5rem));
+        transform: translateX(calc(-50%));
     }
 }
 
 .stack .stack-container svg {
-    width: 54px;
-    height: 54px;
+    width: 3.5rem;
+    height: 3.5rem;
 }
 
 .heading h2 {
@@ -332,7 +339,7 @@ onMounted(() => {
 
 .subheading {
     font-family: var(--poppins);
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     line-height: 1.1rem;
     color: var(--black-text);
 }

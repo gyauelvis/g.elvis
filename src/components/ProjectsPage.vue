@@ -26,15 +26,15 @@ defineProps({
 
 </script>
 <template>
-    <div class="project">
+    <div class="project" id="projects">
         <div class="projContainer">
             <div class="name-code">
                 <h2>{{ projectName }}</h2>
                 <a :href="linkToGithub">CODE</a>
             </div>
-            <div class="cover-image">
+            <a :href="projectLink" class="cover-image">
                 <img :src="projectImage" alt="">
-            </div>
+            </a>
             <div class="projectDescription">
                 <span>{{ projectDescription }}</span>
             </div>
@@ -43,6 +43,11 @@ defineProps({
 </template>
 
 <style scoped>
+
+.view-code{
+    display: none;
+    position: absolute;
+}
 .projContainer {
     display: flex;
     flex-direction: column;
@@ -84,14 +89,24 @@ defineProps({
 
 .cover-image img {
     width: 100%;
+    height: 10rem;
     object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+    transform: scale(1);
+}
+.cover-image{
+    overflow: hidden;;
+}
+.cover-image img:hover {
+    transform: scale(1.05);
 }
 
 .name-code a {
     border-left: 1px solid #9D9B96;
 }
 
-:is(h2, a) {
+:is(h2, a):not(.cover-image){
     font-size: 1rem;
     text-transform: uppercase;
     height: 100%;
@@ -105,4 +120,6 @@ defineProps({
     height: fit-content;
   }
 }
+
+
 </style>
