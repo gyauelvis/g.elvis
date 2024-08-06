@@ -147,7 +147,7 @@ onMounted(() => {
     flex-direction: row;
     align-items: flex-end;
     gap: 2rem;
-    padding: 0 1.8rem 30% 1.8rem;
+    padding: 0 1.8rem 2rem 1.8rem;
 }
 
 .s-media {

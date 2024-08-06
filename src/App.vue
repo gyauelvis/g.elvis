@@ -183,8 +183,14 @@ onMounted(() => {
   font-family: var(--poppins);
   font-style: normal;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   line-height: 1.1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .subheading {
+      font-size: 1.2rem;
+  }
 }
 
 .projects {
