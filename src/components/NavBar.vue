@@ -37,7 +37,7 @@
 }
 
 .nav-bar :is(span, a){
-    font-family: var(--poppins);
+    font-family: var(--play-fair);
     color: var(--black-text-90);
     text-decoration: none;
     font-weight: 600;

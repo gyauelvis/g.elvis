@@ -307,7 +307,7 @@ onMounted(() => {
     padding: 1rem 0;
     position: absolute;
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     animation: scroll 10s linear infinite;
 }
 
@@ -323,8 +323,8 @@ onMounted(() => {
 }
 
 .stack .stack-container svg {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 .heading h2 {
@@ -339,8 +339,23 @@ onMounted(() => {
 
 .subheading {
     font-family: var(--poppins);
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     line-height: 1.1rem;
     color: var(--black-text);
+}
+
+@media screen and (min-width: 768px) {
+    .subheading {
+        font-size: 1.2rem;
+    }
+
+    .stack .stack-container svg {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+    .stack-container {
+        gap: 2rem;
+    }
+    
 }
 </style>

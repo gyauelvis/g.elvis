@@ -168,8 +168,8 @@ onMounted(() => {
 
 .name div {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .name div:has(#gyau) {
@@ -199,9 +199,8 @@ onMounted(() => {
 
 .description div {
     font-family: var(--poppins);
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     padding: 1rem 0.5rem;
-    text-align: right;
     line-height: 1.1rem;
     transition: transform 200ms ease-in-out;
     transform: translateY(250px);
@@ -239,8 +238,8 @@ div:has(#elvis)>img {
 .call-to-action {
     display: flex;
     gap: 1rem;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     position: relative;
     z-index: 10;
 }
@@ -278,6 +277,18 @@ div:has(#elvis)>img {
 
 }
 
+.resume svg{
+    width: 1rem; 
+ }
+
+ .resume {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 0.5rem;
+     padding: 1rem;
+ }
+
 .resume {
     border: 1px solid #9D9B96;
     background: rgba(217, 217, 217, 0.00);
@@ -307,17 +318,6 @@ div:has(#elvis)>img {
     .proj svg {
         width: 2.5rem;
         height: 2.5rem;
-    }
-    .resume svg{
-       width: 2rem; 
-    }
-
-    .resume {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 1rem;
     }
 
     .s-media div a svg {
