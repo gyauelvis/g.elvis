@@ -5,6 +5,7 @@ import myStack from './components/MyStack.vue'
 import { gsap } from "gsap";
 import projectsTemplate from './components/ProjectsPage.vue'
 import { onMounted } from 'vue';
+import Loader from './components/Loader.vue'
 
 document.addEventListener('mousemove', (e) => {
   let cursorDot = document.querySelector('.cursorDot');
@@ -61,7 +62,18 @@ let animatedProjectScroller = () => {
     previousScrollTime = currentTime;
   }
 }
+
+let isBgLoaded = false;
+
+const loadBg = ()=>{
+  const bgImg = new Image();
+  bgImg.src = '/assets/img/gradient-bg.webp';
+  bgImg.onload = ()=> isBgLoaded = true;
+}
+
+
 onMounted(() => {
+  loadBg();
   document.addEventListener('scroll', () => {
     document.querySelector('.nav').style.backdropFilter = 'blur(5px)';
   })
@@ -70,7 +82,7 @@ onMounted(() => {
 
 <template>
   <div class="app-container">
-    <div>
+    <div v-if="!isBgLoaded">
       <div class="cursor"></div>
       <div class="cursorDot"></div>
       <nav-bar></nav-bar>
@@ -130,6 +142,9 @@ onMounted(() => {
           </div>
         </div>
       </div>
+    </div>
+    <div v-else class="loader">
+      <Loader></Loader>
     </div>
   </div>
 </template>
