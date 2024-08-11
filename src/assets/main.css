@@ -37,7 +37,6 @@
 }
 body {
   overflow-x: hidden !important;
-  width: 100vw;
   background-image: url('/src/assets/img/gradient-bg.webp');
   background-position: center;
   background-size: cover;

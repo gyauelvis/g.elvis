@@ -28,6 +28,11 @@ document.querySelectorAll("a").forEach((ele) => {
   ele.addEventListener("mouseleave", mouseLeave);
 });
 
+const username = 'gyauelvis';
+const response = await fetch(
+    `https://dev.to/api/articles?username=${username}`
+);
+const blogs = await response.json();
 
 // document.querySelectorAll('.cover-image').forEach(ele=>{
 //   ele.addEventListener('click',(e)=>{

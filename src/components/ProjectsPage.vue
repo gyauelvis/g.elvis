@@ -54,6 +54,7 @@ defineProps({
     border: 1px solid #9D9B96;
     width: 100%;
     min-width: 20rem;
+    height: 20rem;
     scroll-snap-align: center;
     
     .name-code {

@@ -10,8 +10,8 @@ import Loader from './components/Loader.vue'
 
 const Blogs = defineAsyncComponent({
   loader: () => import('./components/Blogs.vue'),
-  loadingComponent: Loader,
-  suspensible: false,
+  //loadingComponent: Loader,
+  //  suspensible: false,
   timeout: 5000
 })
 
@@ -73,7 +73,9 @@ let animatedProjectScroller = () => {
 
 let isPageLoaded = ref(false);
 
-const loadPage = () => document.body.onload = () => isPageLoaded.value = true;
+const loadPage = () => document.body.onload = () => isPageLoaded = true;
+
+
 
 onMounted(async () => {
   loadPage();
@@ -108,7 +110,8 @@ onMounted(async () => {
                     d="M16.4 21L15 19.6L16.575 18L15 16.425L16.4 15L18 16.6L19.575 15L21 16.425L19.4 18L21 19.6L19.575 21L18 19.425L16.4 21ZM6 19C6.28333 19 6.52083 18.9042 6.7125 18.7125C6.90417 18.5208 7 18.2833 7 18C7 17.7167 6.90417 17.4792 6.7125 17.2875C6.52083 17.0958 6.28333 17 6 17C5.71667 17 5.47917 17.0958 5.2875 17.2875C5.09583 17.4792 5 17.7167 5 18C5 18.2833 5.09583 18.5208 5.2875 18.7125C5.47917 18.9042 5.71667 19 6 19ZM6 21C5.16667 21 4.45833 20.7083 3.875 20.125C3.29167 19.5417 3 18.8333 3 18C3 17.1667 3.29167 16.4583 3.875 15.875C4.45833 15.2917 5.16667 15 6 15C6.61667 15 7.17917 15.1708 7.6875 15.5125C8.19583 15.8542 8.56667 16.3167 8.8 16.9C9.45 16.7167 9.97917 16.3583 10.3875 15.825C10.7958 15.2917 11 14.6833 11 14V10C11 8.61667 11.4875 7.4375 12.4625 6.4625C13.4375 5.4875 14.6167 5 16 5H17.15L15.575 3.425L17 2L21 6L17 10L15.575 8.6L17.15 7H16C15.1667 7 14.4583 7.29167 13.875 7.875C13.2917 8.45833 13 9.16667 13 10V14C13 15.2167 12.6083 16.2875 11.825 17.2125C11.0417 18.1375 10.05 18.7083 8.85 18.925C8.65 19.5417 8.2875 20.0417 7.7625 20.425C7.2375 20.8083 6.65 21 6 21ZM4.4 9L3 7.6L4.575 6L3 4.425L4.4 3L6 4.6L7.575 3L9 4.425L7.4 6L9 7.6L7.575 9L6 7.425L4.4 9Z"
                     fill="#1C1B1F" />
                 </g>
-              </svg></span>
+              </svg>
+            </span>
           </div>
           <div class="subheading">
             <span>
@@ -147,14 +150,43 @@ onMounted(async () => {
           </div>
         </div>
       </div>
-      <Suspense>
-        <template #default>
-          <Blogs />
-        </template>
-        <template #fallback>
-          <Loader></Loader>
-        </template>
-      </Suspense>
+      <div class="wrapper">
+        <div class="projects">
+          <div class="heading">
+            <h2>Blogs</h2>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#1c1b1f"
+                fill="none">
+                <path d="M10.5 8H18.5M10.5 12H13M18.5 12H16M10.5 16H13M18.5 16H16" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M7 7.5H6C4.11438 7.5 3.17157 7.5 2.58579 8.08579C2 8.67157 2 9.61438 2 11.5V18C2 19.3807 3.11929 20.5 4.5 20.5C5.88071 20.5 7 19.3807 7 18V7.5Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M16 3.5H11C10.07 3.5 9.60504 3.5 9.22354 3.60222C8.18827 3.87962 7.37962 4.68827 7.10222 5.72354C7 6.10504 7 6.57003 7 7.5V18C7 19.3807 5.88071 20.5 4.5 20.5H16C18.8284 20.5 20.2426 20.5 21.1213 19.6213C22 18.7426 22 17.3284 22 14.5V9.5C22 6.67157 22 5.25736 21.1213 4.37868C20.2426 3.5 18.8284 3.5 16 3.5Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </div>
+          <div class="subheading">
+            <span>
+              Sharing Knowledge is a way of giving back to society. Check out a few blogs I have written.
+            </span>
+          </div>
+          <Suspense>
+            <template #default>
+              <Blogs />
+            </template>
+            <template #fallback>
+              <div class="">
+                <h3>Loading...</h3>
+              </div>
+            </template>
+          </Suspense>
+        </div>
+
+      </div>
+
     </div>
 
     <div v-else>
@@ -267,5 +299,4 @@ onMounted(async () => {
   height: 10px;
   border-radius: 2rem;
   background-color: rgba(34, 34, 34, 0.9);
-}
-</style>
+}</style>

@@ -3,11 +3,10 @@
         <div v-for="(blog, index) in blogs" :key="index" class="project">
             <div class="projContainer">
                 <div class="name-code">
-                    <h2>{{ blog.title.substring(0, 55) }}</h2>
-                    <!-- <a :href="blog.url">Read</a> -->
+                    <h2>{{ blog.title.length > 50 ? `${blog.title.substring(0, 45)}...` : blog.title }}</h2>
                 </div>
-                <a href="#" class="cover-image">
-                    <img :src="blog.cover_image" alt="">
+                <a :href="blog.url" target="_blank" class="cover-image">
+                    <img :src="blog.cover_image || blogImg" alt="">
                 </a>
                 <div class="projectDescription">
                     <span>{{ blog.description }}...</span>
@@ -23,6 +22,9 @@ const response = await fetch(
     `https://dev.to/api/articles?username=${username}`
 );
 const blogs = await response.json();
+console.log(response.ok);
+
+const blogImg = '/src/assets/img/blogImg.svg'
 </script>
 <style scoped>
 .blog-container {
@@ -41,9 +43,5 @@ const blogs = await response.json();
     height: 0;
     width: 0;
     background-color: transparent;
-}
-
-.name-code {
-    white-space: nowrap;
 }
 </style>
