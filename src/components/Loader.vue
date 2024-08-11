@@ -6,7 +6,11 @@
     
 </template>
 
-<script>
+<script setup>
+    import {onMounted} from 'vue'
+    onMounted(()=>{
+        document.body.style.cursor = 'wait';
+    })
 </script>
 
 <style scoped>
@@ -18,8 +22,9 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     text-align: center;
+    cursor: wait;
 }
 .loader {
     --s: 64px;

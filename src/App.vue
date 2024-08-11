@@ -4,8 +4,16 @@ import heroPage from './components/HeroPage.vue'
 import myStack from './components/MyStack.vue'
 import { gsap } from "gsap";
 import projectsTemplate from './components/ProjectsPage.vue'
-import { onMounted } from 'vue';
+import { onMounted, ref, defineAsyncComponent } from 'vue';
 import Loader from './components/Loader.vue'
+//import Blogs from './components/Blogs.vue'
+
+const Blogs = defineAsyncComponent({
+  loader: () => import('./components/Blogs.vue'),
+  loadingComponent: Loader,
+  suspensible: false,
+  timeout: 5000
+})
 
 document.addEventListener('mousemove', (e) => {
   let cursorDot = document.querySelector('.cursorDot');
@@ -63,26 +71,23 @@ let animatedProjectScroller = () => {
   }
 }
 
-let isBgLoaded = false;
+let isPageLoaded = ref(false);
 
-const loadBg = ()=>{
-  const bgImg = new Image();
-  bgImg.src = '/assets/img/gradient-bg.webp';
-  bgImg.onload = ()=> isBgLoaded = true;
-}
+const loadPage = () => document.body.onload = () => isPageLoaded.value = true;
 
-
-onMounted(() => {
-  loadBg();
+onMounted(async () => {
+  loadPage();
   document.addEventListener('scroll', () => {
     document.querySelector('.nav').style.backdropFilter = 'blur(5px)';
   })
 })
+
+
 </script>
 
 <template>
   <div class="app-container">
-    <div v-if="!isBgLoaded">
+    <div v-if="!isPageLoaded">
       <div class="cursor"></div>
       <div class="cursorDot"></div>
       <nav-bar></nav-bar>
@@ -142,8 +147,17 @@ onMounted(() => {
           </div>
         </div>
       </div>
+      <Suspense>
+        <template #default>
+          <Blogs />
+        </template>
+        <template #fallback>
+          <Loader></Loader>
+        </template>
+      </Suspense>
     </div>
-    <div v-else class="loader">
+
+    <div v-else>
       <Loader></Loader>
     </div>
   </div>
@@ -204,7 +218,7 @@ onMounted(() => {
 
 @media screen and (min-width: 768px) {
   .subheading {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 }
 

@@ -36,13 +36,17 @@
     max-width: 1000px;
 }
 
-.nav-bar :is(span, a){
+.nav-bar a{
     font-family: var(--play-fair);
     color: var(--black-text-90);
     text-decoration: none;
     font-weight: 600;
     font-size: 20px;
     opacity: 1;
+}
+
+.nav-bar a:nth-child(1){
+    font-family: var(--sankofa);
 }
 .nav-bar span::before{
     content: '<';

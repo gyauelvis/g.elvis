@@ -42,7 +42,7 @@ defineProps({
     </div>
 </template>
 
-<style scoped>
+<style>
 
 .view-code{
     display: none;

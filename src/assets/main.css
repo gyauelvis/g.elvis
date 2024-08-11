@@ -20,11 +20,19 @@
   font-weight: 600;
 }
 
+
+@font-face {
+  font-family: 'Sankofa';
+  src: url('./fonts/SankofaDisplay-Regular.ttf') format('truetype');
+  font-weight: 500;
+}
+
 :root {
   --black-text-90: #222222e6;
   --black-text-100: #222222;
   --poppins: Poppins, 'sans-serif';
   --play-fair: Martia, 'sans-serif';
+  --sankofa: Sankofa, 'sans-serif';
   scroll-behavior: smooth;
 }
 body {
