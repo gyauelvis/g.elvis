@@ -17,14 +17,23 @@
 </template>
 
 <script setup>
-const username = 'gyauelvis';
-const response = await fetch(
-    `https://dev.to/api/articles?username=${username}`
-);
-const blogs = await response.json();
-console.log(response.ok);
 
+import {ref} from 'vue';
+const username = 'gyauelvis';
+const blogs = ref([]);
 const blogImg = '/src/assets/img/blogImg.svg'
+
+const fetchBlogs = async () => {
+    const response = await fetch(
+        `https://dev.to/api/articles?username=${username}`
+    );
+    const blogs = await response.json();
+    return blogs;
+}
+
+blogs.value = await fetchBlogs();
+
+
 </script>
 <style scoped>
 .blog-container {
