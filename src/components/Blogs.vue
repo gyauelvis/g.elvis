@@ -18,7 +18,7 @@
 
 <script setup>
 
-import {ref} from 'vue';
+import { ref, onMounted } from 'vue';
 const username = 'gyauelvis';
 const blogs = ref([]);
 const blogImg = '/src/assets/img/blogImg.svg'
@@ -27,11 +27,10 @@ const fetchBlogs = async () => {
     const response = await fetch(
         `https://dev.to/api/articles?username=${username}`
     );
-    const blogs = await response.json();
-    return blogs;
+    blogs.value = await response.json();
 }
+onMounted(() =>fetchBlogs())
 
-blogs.value = await fetchBlogs();
 
 
 </script>
