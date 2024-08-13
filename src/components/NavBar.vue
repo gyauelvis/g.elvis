@@ -36,13 +36,20 @@
     max-width: 1000px;
 }
 
-.nav-bar :is(span, a){
-    font-family: var(--play-fair);
+.nav-bar a{
     color: var(--black-text-90);
     text-decoration: none;
     font-weight: 600;
     font-size: 20px;
     opacity: 1;
+    text-transform: lowercase
+}
+
+.nav-bar a:nth-child(1){
+    font-family: var(--sankofa);
+}
+.nav-bar a:nth-child(2){
+    font-family: var(--play-fair);;
 }
 .nav-bar span::before{
     content: '<';

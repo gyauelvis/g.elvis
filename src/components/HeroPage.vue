@@ -238,7 +238,7 @@ div:has(#elvis)>img {
 .call-to-action {
     display: flex;
     gap: 1rem;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     position: relative;
     z-index: 10;
