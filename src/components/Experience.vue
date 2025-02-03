@@ -61,6 +61,10 @@
     align-items: center;
 }
 
+.hyphen {
+    display: none;
+  }
+
 .green-circle {
     width: 1rem;
     height: 1rem;
