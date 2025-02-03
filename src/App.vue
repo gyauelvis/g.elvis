@@ -6,6 +6,9 @@ import { gsap } from "gsap";
 import projectsTemplate from './components/ProjectsPage.vue'
 import { onMounted } from 'vue';
 import Loader from './components/Loader.vue'
+import Currently from './components/Currently.vue'
+import Experience from './components/Experience.vue'
+import Project from './components/Project.vue'
 
 document.addEventListener('mousemove', (e) => {
   let cursorDot = document.querySelector('.cursorDot');
@@ -63,14 +66,6 @@ let animatedProjectScroller = () => {
   }
 }
 
-let isBgLoaded = false;
-
-const loadBg = ()=>{
-  const bgImg = new Image();
-  bgImg.src = '/assets/img/gradient-bg.webp';
-  bgImg.onload = ()=> isBgLoaded = true;
-}
-
 
 onMounted(() => {
   loadBg();
@@ -78,17 +73,21 @@ onMounted(() => {
     document.querySelector('.nav').style.backdropFilter = 'blur(5px)';
   })
 })
+
 </script>
 
 <template>
   <div class="app-container">
-    <div v-if="!isBgLoaded">
+    <div>
       <div class="cursor"></div>
       <div class="cursorDot"></div>
       <nav-bar></nav-bar>
       <hero-page></hero-page>
+      <Currently />
+      <Experience />
+      <Project />
       <my-stack></my-stack>
-      <div class="wrapper">
+      <!-- <div class="wrapper">
         <div class="projects">
           <div class="heading">
             <h2>PROJECTS</h2>
@@ -141,10 +140,7 @@ onMounted(() => {
             <div class="circle"></div>
           </div>
         </div>
-      </div>
-    </div>
-    <div v-else class="loader">
-      <Loader></Loader>
+      </div> -->
     </div>
   </div>
 </template>
@@ -204,7 +200,7 @@ onMounted(() => {
 
 @media screen and (min-width: 768px) {
   .subheading {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 }
 

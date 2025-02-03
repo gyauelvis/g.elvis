@@ -22,7 +22,7 @@
     top: 0;
     z-index: 99;
     width: 100%;
-    background-image: url('/assets/img/gradient-bg.webp');
+    background-color: var(--bg);
     opacity: 0.9;
 }
 .nav-bar{
@@ -32,7 +32,7 @@
     justify-content: space-between;
     height: 4rem;
     width: 100vw;
-    padding: 0 1.5rem;
+    padding: 0 0.5rem;
     max-width: 1000px;
 }
 
@@ -54,6 +54,7 @@
 @media screen and (min-width: 550px) and (max-width: 1000px) {
     .nav-bar{
         max-width: 700px;
+        padding: 0 1.5rem;
     }
 }
 
