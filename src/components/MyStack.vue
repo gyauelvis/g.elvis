@@ -23,17 +23,17 @@ onMounted(() => {
         <div class="container">
             <div class="heading">
                 <h2>
-                    <span>Languages and Tools</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 32 32" fill="none">
-                        <path d="M29.3333 3.33337H2.66663V23.3334H29.3333V3.33337Z" stroke="#EEE" stroke-width="1.5"
+                        <path d="M29.3333 3.33337H2.66663V23.3334H29.3333V3.33337Z" stroke="#ff4646" stroke-width="1.5"
                             stroke-linejoin="round" />
                         <path
                             d="M24 13.3333L24.7071 14.0404L25.4143 13.3333L24.7071 12.6262L24 13.3333ZM8.00003 13.3333L7.29292 12.6262L6.58582 13.3333L7.29292 14.0404L8.00003 13.3333ZM19.293 10.0404L23.293 14.0404L24.7071 12.6262L20.7071 8.62621L19.293 10.0404ZM23.293 12.6262L19.293 16.6262L20.7071 18.0404L24.7071 14.0404L23.293 12.6262ZM11.2929 8.62621L7.29292 12.6262L8.70714 14.0404L12.7071 10.0404L11.2929 8.62621ZM7.29292 14.0404L11.2929 18.0404L12.7071 16.6262L8.70714 12.6262L7.29292 14.0404ZM16.3632 7.75745L13.6966 18.4241L15.6368 18.9092L18.3035 8.24251L16.3632 7.75745Z"
-                            fill="#EEE" />
-                        <path d="M18.6667 28.6667V23.3334M13.3334 28.6667V23.3334" stroke="#EEE" stroke-width="1.5"
+                            fill="#ff4646" />
+                        <path d="M18.6667 28.6667V23.3334M13.3334 28.6667V23.3334" stroke="#ff4646" stroke-width="1.5"
                             stroke-linecap="round" />
-                        <path d="M9.33337 28.6666H22.6667" stroke="#EEE" stroke-width="1.5" />
+                        <path d="M9.33337 28.6666H22.6667" stroke="#ff4646" stroke-width="1.5" />
                     </svg>
+                    <span> Languages & Tools</span>
                 </h2>
                 <div class="subheading">
                     <span>

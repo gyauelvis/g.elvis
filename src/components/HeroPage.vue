@@ -55,7 +55,6 @@ onMounted(() => {
                 <div class="name">
                     <div>
                         <span id="im">I'm</span>
-                        <!-- <img src="/src/assets/img/gelvis.jpg" alt="" title="yep, that me" id="myImage"> -->
                         <span id="elvis">Elvis</span>
                     </div>
                     <div>
@@ -65,19 +64,23 @@ onMounted(() => {
                 </div>
                 <div class="description">
                     <div>
-                        <p>I’m a <strong class="underline">technically creative problem solver ⚡</strong>, passionate
-                            about
-                            <strong>building interactive experiences</strong> and <strong>empowering developer
-                                communities</strong>. As a <strong class="underline">GitHub Campus
+                        <p>I'm a <strong class="highlight-text highlight-primary underline">technically creative problem
+                                solver ⚡</strong>, passionate about
+                            <strong class="highlight-text highlight-secondary">building interactive experiences</strong>
+                            and <strong class="highlight-text highlight-secondary">empowering developer
+                                communities</strong>. As a <strong
+                                class="highlight-text highlight-primary underline">GitHub Campus
                                 Expert</strong> 🚀,
-                            I thrive on <strong>sharing knowledge</strong> and <strong>fostering collaboration</strong>.
-                            <span>From crafting <strong class="underline">sleek web
-                                    interfaces</strong> 🎨 to driving <strong>open-source
+                            I thrive on <strong class="highlight-text highlight-success">sharing knowledge</strong> and
+                            <strong class="highlight-text highlight-success">fostering collaboration</strong>.
+                            <span>From crafting <strong class="highlight-text highlight-primary underline">sleek web
+                                    interfaces</strong> 🎨 to driving <strong
+                                    class="highlight-text highlight-secondary">open-source
                                     contributions</strong> 🛠️,
-                                I’m always looking for ways to make <strong>tech more accessible and impactful</strong>
+                                I'm always looking for ways to make <strong
+                                    class="highlight-text highlight-success">tech more accessible and impactful</strong>
                                 🌍.</span>
                         </p>
-
                     </div>
                 </div>
                 <!-- <div class="call-to-action">
@@ -217,6 +220,7 @@ onMounted(() => {
     color: var(--gray);
 }
 
+
 .s-media:before,
 .s-media::after {
     content: '';
@@ -277,6 +281,57 @@ div:has(#elvis)>img {
 
 .underline {
     text-decoration: underline;
+}
+
+.highlight-text {
+    position: relative;
+    display: inline;
+    transition: all 0.3s ease;
+}
+
+.highlight-text::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: -1px;
+    right: -1px;
+    height: 0.4em;
+    z-index: -1;
+    transition: all 0.3s ease;
+    transform-origin: bottom;
+}
+
+.highlight-primary::before {
+    background: linear-gradient(100deg, rgba(255, 214, 0, 0.25), rgba(255, 198, 0, 0.4));
+}
+
+.highlight-secondary::before {
+    background: linear-gradient(100deg, rgba(99, 102, 241, 0.25), rgba(99, 102, 241, 0.4));
+}
+
+.highlight-success::before {
+    background: linear-gradient(100deg, rgba(52, 211, 153, 0.25), rgba(52, 211, 153, 0.4));
+}
+
+.highlight-text:hover::before {
+    height: 100%;
+    transform: scaleY(1.05);
+}
+
+
+.highlight-text:hover {
+    transform: translateY(-1px);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.underline {
+    text-decoration: none !important;
+    font-weight: 600;
+}
+
+.highlight-text strong {
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes oscillate {

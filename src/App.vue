@@ -5,24 +5,12 @@ import myStack from './components/MyStack.vue'
 import { gsap } from "gsap";
 import projectsTemplate from './components/ProjectsPage.vue'
 import { onMounted } from 'vue';
-import Loader from './components/Loader.vue'
 import Currently from './components/Currently.vue'
 import Experience from './components/Experience.vue'
 import Project from './components/Project.vue'
+import Footer from './components/Footer.vue';
 
-document.addEventListener('mousemove', (e) => {
-  let cursorDot = document.querySelector('.cursorDot');
-  let cursor = document.querySelector('.cursor');
-  cursorDot.style.top = `${e.pageY}px`;
-  cursorDot.style.left = `${e.pageX}px`;
-  gsap.to('.cursor', {
-    ease: 'power3.out',
-    duration: .5,
-    delay: 0.2,
-    left: `${e.pageX - 20}px`,
-    top: `${e.pageY - 20}px`
-  })
-})
+
 let previousScrollTime = 0;
 let previousScrollValue = 0;
 let addValue = 10;
@@ -68,10 +56,42 @@ let animatedProjectScroller = () => {
 
 
 onMounted(() => {
-  loadBg();
+  const cursorDot = document.querySelector('.cursorDot');
+  const cursor = document.querySelector('.cursor');
+
   document.addEventListener('scroll', () => {
     document.querySelector('.nav').style.backdropFilter = 'blur(5px)';
   })
+
+  document.addEventListener('mousemove', (e) => {
+    cursorDot.style.top = `${e.pageY}px`;
+    cursorDot.style.left = `${e.pageX}px`;
+    gsap.to('.cursor', {
+      ease: 'power3.out',
+      duration: .5,
+      delay: 0.2,
+      left: `${e.pageX - 20}px`,
+      top: `${e.pageY - 20}px`
+    })
+  })
+
+  let hover = () => {
+    cursorDot.style.display = 'none';
+    cursor.style.display = 'none';
+    document.body.style.cursor = "pointer"
+  };
+
+  let mouseLeave = () => {
+    cursorDot.style.display = 'block';
+    cursor.style.display = 'block';
+     document.body.style.cursor = "none";
+  };
+
+  document.querySelectorAll('a').forEach((ele) => {
+    ele.addEventListener('mouseenter', hover);
+    ele.addEventListener('mouseleave', mouseLeave);
+  });
+
 })
 
 </script>
@@ -87,6 +107,8 @@ onMounted(() => {
       <Experience />
       <Project />
       <my-stack></my-stack>
+      <Footer />
+
       <!-- <div class="wrapper">
         <div class="projects">
           <div class="heading">
@@ -153,17 +175,21 @@ onMounted(() => {
 }
 
 .cursor {
-  width: 50px;
-  height: 50px;
+  width: 20px;
+  height: 20px;
   transition: all 0.05s ease-in-out;
-  background-color: #ECE4B7;
+  background: linear-gradient(135deg, rgba(9, 18, 44, 0.08) 0%, rgba(9, 18, 44, 0.12) 100%);
   opacity: 70%;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.05);
+  backdrop-filter: blur(4px);
 }
+
 
 .cursorDot {
   width: 12px;
   height: 12px;
-  background-color: var(--black-text-100);
+  background-color: #ff4646;
 }
 
 .cursor,

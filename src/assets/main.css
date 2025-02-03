@@ -54,6 +54,7 @@ body {
   background-size: cover;
   background-color: var(--bg);
   background-repeat: no-repeat;
+  cursor: none;
 }
 
 * {
@@ -61,7 +62,6 @@ body {
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
-  cursor: none;
 }
 
 .wrapper {
@@ -113,6 +113,8 @@ article {
   font-size: small;
   line-height: 1.8rem;
 }
+
+
 
 .red-circle {
   width: 1.5rem;
