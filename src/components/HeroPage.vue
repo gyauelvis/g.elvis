@@ -71,7 +71,7 @@ onMounted(() => {
                                 communities</strong>. As a <strong class="underline">GitHub Campus
                                 Expert</strong> 🚀,
                             I thrive on <strong>sharing knowledge</strong> and <strong>fostering collaboration</strong>.
-                            <span class="desktop-only">From crafting <strong class="underline">sleek web
+                            <span>From crafting <strong class="underline">sleek web
                                     interfaces</strong> 🎨 to driving <strong>open-source
                                     contributions</strong> 🛠️,
                                 I’m always looking for ways to make <strong>tech more accessible and impactful</strong>
@@ -152,7 +152,7 @@ onMounted(() => {
 <style scoped>
 .wrapper {
     overflow-x: hidden !important;
-    min-height: calc(100vh - 4rem);
+    min-height: calc(100dvh - 4rem);
 }
 
 .desktop-only {
