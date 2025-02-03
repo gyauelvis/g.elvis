@@ -60,14 +60,6 @@
     align-items: center;
 }
 
-.red-circle {
-    width: 1.5rem;
-    height: 1.5rem;
-    background: linear-gradient(135deg, #ff4646 0%, #ff7676 100%);
-    border-radius: 50%;
-    margin-right: 1rem;
-    box-shadow: 0 4px 6px -1px rgba(255, 70, 70, 0.1), 0 2px 4px -1px rgba(255, 70, 70, 0.06);
-}
 
 .current-stuff-container {
     display: flex;
@@ -103,12 +95,12 @@ h3 {
     font-weight: 500;
     background: linear-gradient(135deg, rgba(9, 18, 44, 0.08) 0%, rgba(9, 18, 44, 0.12) 100%);
     color: #2563eb;
-    padding: 0.3rem 0.8rem;
+    padding: 0.1rem 0.3rem;
     border-radius: 20px;
     border: 1px solid rgba(37, 99, 235, 0.1);
     transition: all 0.2s ease;
     display: inline-block;
-    margin: 0 0.2rem;
+    margin: 0 0.1rem;
     backdrop-filter: blur(4px);
 }
 

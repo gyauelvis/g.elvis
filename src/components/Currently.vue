@@ -60,13 +60,6 @@
     align-items: center;
   }
   
-  .red-circle {
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: red;
-    border-radius: 50%;
-    margin-right: 1rem;
-  }
   
   .green-circle {
     width: 1rem;
@@ -111,13 +104,12 @@
     font-family: var(--playfair);
     font-weight: 500;
     color: #2563eb;
-    background: linear-gradient(120deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     border: 1px solid rgba(37, 99, 235, 0.2);
     transition: all 0.2s ease;
-    display: inline-block;
-    margin: 0 0.2rem;
+    display: inline;
+    margin: 0 0.1rem;
     position: relative;
     box-shadow: 0 2px 4px rgba(37, 99, 235, 0.05);
     backdrop-filter: blur(4px);
