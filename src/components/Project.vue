@@ -1,5 +1,3 @@
-<script setup>
-</script>
 <template>
     <div class="wrapper">
         <div class="container">
@@ -18,11 +16,11 @@
                         </div>
                         <div>
                             <article>
-                                I led my class team in developing a dataspace app using <span
-                                    class="tech">Next.js</span>,
+                                I led my class team in developing a dataspace app using
+                                <span class="tech">Next.js</span>,
                                 <span class="tech">Prisma ORM</span>, and
-                                <span class="tech">Supabase</span> The app allows users to connect to multiple <span
-                                    class="tech">PostgreSQL</span> databases,
+                                <span class="tech">Supabase</span> The app allows users to connect to multiple
+                                <span class="tech">PostgreSQL</span> databases,
                                 write, execute, save, and export <span class="tech">SQL</span> queries seamlessly. This
                                 project enhances database
                                 management efficiency by providing an intuitive and interactive interface for handling
@@ -34,9 +32,6 @@
                         <div>
                             <span>🤖</span>
                             <h3>Shell</h3>
-                        </div>
-                        <div class="date">
-                            Jan 2025 - Present
                         </div>
                         <div>
                             <article>
@@ -53,10 +48,11 @@
         </div>
     </div>
 </template>
+
 <style scoped>
 .container {
     max-width: 1000px;
-    padding: 1.5rem 0rem;
+    padding: 1.5rem 0;
 }
 
 .heading div {
@@ -64,21 +60,13 @@
     align-items: center;
 }
 
-
 .red-circle {
-    width: 3rem;
-    height: 3rem;
-    background-color: red;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: linear-gradient(135deg, #ff4646 0%, #ff7676 100%);
     border-radius: 50%;
     margin-right: 1rem;
-}
-
-.green-circle {
-    width: 1rem;
-    height: 1rem;
-    background-color: green;
-    border-radius: 50%;
-    margin-right: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(255, 70, 70, 0.1), 0 2px 4px -1px rgba(255, 70, 70, 0.06);
 }
 
 .current-stuff-container {
@@ -88,40 +76,66 @@
     padding-top: 1rem;
     font-family: var(--space-mono);
     color: var(--gray);
+}
 
-    section {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+.current-stuff-container section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
-        div {
-            display: flex;
-            gap: 0.5rem;
-        }
-    }
+.current-stuff-container section div {
+    display: flex;
+    gap: 0.5rem;
+}
 
-    .date {
-        font-style: italic;
-    }
+.date {
+    font-style: italic;
+    color: #666;
+}
 
-    h3 {
-        font-weight: bold;
-    }
+h3 {
+    font-weight: bold;
+}
 
-    .tech {
-        font-family: var(--playfair);
-        font-weight: bold;
-        color: var(--black-text-90);
-        background-color: #09122C;
-        padding: 0.2rem 0.5rem;
-        border-radius: 5px;
-        color: blue;
-    }
+.tech {
+    font-family: var(--playfair);
+    font-weight: 500;
+    background: linear-gradient(135deg, rgba(9, 18, 44, 0.08) 0%, rgba(9, 18, 44, 0.12) 100%);
+    color: #2563eb;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid rgba(37, 99, 235, 0.1);
+    transition: all 0.2s ease;
+    display: inline-block;
+    margin: 0 0.2rem;
+    backdrop-filter: blur(4px);
+}
 
+.tech:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.2);
 }
 
 a {
-    color: blue;
+    color: #2563eb;
     text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #1d4ed8;
+}
+
+@media screen and (min-width: 768px) {
+    .red-circle {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .current-stuff-container div {
+        flex-direction: row !important;
+    }
 }
 </style>

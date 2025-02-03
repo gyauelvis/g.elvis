@@ -1,5 +1,3 @@
-<script setup>
-</script>
 <template>
     <div class="wrapper">
         <div class="container">
@@ -11,16 +9,15 @@
                 <div class="current-stuff-container">
                     <section>
                         <div>
-                            
                             <h3>🛠️ <a href="https://www.3farmate.com/">3farmate Robotics</a></h3>
-                            <span class="hyphen"> - </span>
+                            <div class="hyphen"> - </div>
                             <p>Software Engineering Intern</p>
                         </div>
                         <div class="date">
                             October 2024 - December 2024
                         </div>
                         <article>
-                            At 3Farmate Robotics, I led the redesign and development of the company’s website to
+                            At 3Farmate Robotics, I led the redesign and development of the company's website to
                             enhance user experience and accessibility. Additionally, I built an integrated
                             system combining inventory management, project management, employee management, and an
                             employee portal, streamlining automated farming operations for improved efficiency.
@@ -30,7 +27,7 @@
                     <section>
                         <div>
                             <h3>🛠️ <a href="https://arnsoninnovate.com/">Arnson Innovate</a></h3>
-                            <span class="hyphen"> - </span>
+                            <div class="hyphen"> - </div>
                             <p>Frontend Developer</p>
                         </div>
                         <div class="date">
@@ -48,6 +45,7 @@
         </div>
     </div>
 </template>
+
 <style scoped>
 .hyphen {
     display: none;
@@ -58,7 +56,6 @@
     padding: 1.5rem 0rem;
 }
 
-
 .heading div {
     display: flex;
     align-items: center;
@@ -67,10 +64,12 @@
 .red-circle {
     width: 1.5rem;
     height: 1.5rem;
-    background-color: red;
+    background: linear-gradient(135deg, #ff4646 0%, #ff7676 100%);
     border-radius: 50%;
     margin-right: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(255, 70, 70, 0.1), 0 2px 4px -1px rgba(255, 70, 70, 0.06);
 }
+
 
 .green-circle {
     width: 1rem;
@@ -87,28 +86,29 @@
     padding-top: 1rem;
     font-family: var(--space-mono);
     color: var(--gray);
+}
 
-    section {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+.current-stuff-container section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
-        div {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            gap: 0.5rem;
-        }
-    }
+.current-stuff-container section div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
 
-    .date {
-        font-style: italic;
-    }
+.date {
+    font-style: italic;
+    color: #666;
+}
 
-    h3 {
-        font-weight: bold;
-    }
+h3 {
+    font-weight: bold;
 }
 
 a {
@@ -127,10 +127,8 @@ a {
         display: inline-block;
     }
 
-    .current-stuff-container {
-        div {
-            flex-direction: row !important;
-        }
+    .current-stuff-container div {
+        flex-direction: row !important;
     }
 }
 </style>
