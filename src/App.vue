@@ -183,6 +183,8 @@ onMounted(() => {
   border: 1px solid rgba(37, 99, 235, 0.2);
   box-shadow: 0 2px 4px rgba(37, 99, 235, 0.05);
   backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 999999 !important;
 }
 
 
@@ -190,6 +192,8 @@ onMounted(() => {
   width: 12px;
   height: 12px;
   background-color: #ff4646;
+  position: relative;
+  z-index: 999999!important;
 }
 
 .cursor,

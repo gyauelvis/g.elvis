@@ -86,6 +86,7 @@ section {
         font-family: var(--play-fair);
         color: var(--gray);
         font-size: 1rem;
+        text-align: center;
 
     }
 
