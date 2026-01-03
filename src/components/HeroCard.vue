@@ -1,3 +1,23 @@
+<script setup>
+import { onMounted } from 'vue'
+import gsap from 'gsap'
+import SplitType from 'split-type'
+
+onMounted(() => {
+  const text = new SplitType('.hero-title', { types: 'chars' })
+
+  gsap.from(text.chars, {
+    y: -50,
+    opacity: 0,
+    rotationX: -90,
+    stagger: 0.02,
+    duration: 1,
+    ease: 'back.out(1.7)',
+    delay: 0.5 // Wait a bit for loader
+  })
+})
+</script>
+
 <template>
   <div class="hero-card bento-card">
     <div class="hero-header">

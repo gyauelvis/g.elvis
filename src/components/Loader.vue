@@ -1,53 +1,86 @@
-<template>
-    <div class="container-loader">
-        Elvis is thinking&#129300;...
-        <div class="loader"></div>
-    </div>
-    
-</template>
+<script setup>
+import { ref, onMounted, defineEmits } from 'vue'
+import gsap from 'gsap'
 
-<script>
+const emit = defineEmits(['loaded'])
+const progress = ref(0)
+const counter = ref(0)
+
+onMounted(() => {
+    const tl = gsap.timeline({
+        onComplete: () => {
+            gsap.to('.loader-container', {
+                yPercent: -100,
+                duration: 1,
+                ease: 'power4.inOut',
+                onComplete: () => emit('loaded')
+            })
+        }
+    })
+
+    tl.to(progress, {
+        value: 100,
+        duration: 3.5,
+        ease: 'power3.inOut',
+        onUpdate: () => {
+            counter.value = Math.floor(progress.value)
+        }
+    })
+})
 </script>
 
+<template>
+    <div class="loader-container">
+        <div class="loader-content">
+            <svg class="progress-ring" width="250" height="250" viewBox="0 0 250 250">
+                <circle class="progress-ring__circle" stroke="white" stroke-width="1" fill="transparent" r="115"
+                    cx="125" cy="125" :style="{ strokeDashoffset: 722 - (722 * progress) / 100 }" />
+            </svg>
+            <div class="counter">{{ counter }}</div>
+        </div>
+    </div>
+</template>
+
 <style scoped>
-.container-loader {
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    z-index: 9999;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    font-family: var(--play-fair);
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100%;
-    text-align: center;
-}
-.loader {
-    --s: 64px;
-    width: var(--s);
-    aspect-ratio: 2;
-    --_g: #000 90%, #0000;
-    background:
-        radial-gradient(farthest-side, var(--_g)) 0 50%/25% 50%,
-        radial-gradient(farthest-side at bottom, var(--_g)) 50% calc(50% - var(--s)/16)/25% 25%,
-        radial-gradient(farthest-side at top, var(--_g)) 50% calc(50% + var(--s)/16)/25% 25%,
-        radial-gradient(farthest-side at bottom, var(--_g)) 100% calc(50% - var(--s)/16)/25% 25%,
-        radial-gradient(farthest-side at top, var(--_g)) 100% calc(50% + var(--s)/16)/25% 25%;
-    background-repeat: no-repeat;
-    animation: l14 1s infinite;
+    color: white;
 }
 
-@keyframes l14 {
-    25% {
-        background-position: 0 50%, 50% 0, 50% 100%, 100% 0, 100% 100%
-    }
+.loader-content {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    50% {
-        background-position: 100% 50%, 0 0, 0 100%, 50% 0, 50% 100%
-    }
+.progress-ring__circle {
+    stroke-dasharray: 722;
+    /* 2 * PI * R (115) ≈ 722.5 */
+    stroke-dashoffset: 722;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 0.1s linear;
+    opacity: 0.9;
+}
 
-    75%,
-    100% {
-        background-position: 100% 50%, 0 calc(50% - var(--s)/16), 0 calc(50% + var(--s)/16), 50% calc(50% - var(--s)/16), 50% calc(50% + var(--s)/16)
-    }
+.counter {
+    position: absolute;
+    font-family: var(--font-playfair), serif;
+    /* Using Playfair Display as per style guide potentially, or Fallback to serif */
+    font-size: 80px;
+    font-weight: 300;
+    letter-spacing: -2px;
 }
 </style>
