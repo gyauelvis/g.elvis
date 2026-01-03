@@ -34,6 +34,12 @@
   padding: 24px;
 }
 
+@media (max-width: 640px) {
+  .about-card {
+    min-height: 520px;
+  }
+}
+
 a {
   color: var(--accent-green);
   text-decoration: underline;
