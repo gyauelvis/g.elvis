@@ -1,149 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Product+Sans:wght@400;500;700&display=swap');
+
+/* Fallback to system fonts that look like Google Sans */
 @font-face {
-  font-family: 'Poppins';
-  src:
-    url('./fonts/poppins-regular-webfont.woff2') format('woff2'),
-    url('./fonts/poppins-regular-webfont.woff') format('woff');
-  font-weight: normal;
+  font-family: 'Google Sans';
+  src: local('Google Sans'), local('ProductSans-Regular'), local('Roboto');
+  font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  font-weight: 600;
-  src:
-    url('./fonts/poppins-bold-webfont.woff2') format('woff2'),
-    url('./fonts/poppins-bold-webfont.woff') format('woff');
+  font-family: 'Google Sans';
+  src: local('Google Sans Medium'), local('ProductSans-Medium'), local('Roboto Medium');
+  font-weight: 500;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'Martia';
-  src: url('./fonts/MartianMono_Condensed-Bold.ttf') format('truetype');
-  font-weight: 600;
+  font-family: 'Google Sans';
+  src: local('Google Sans Bold'), local('ProductSans-Bold'), local('Roboto Bold');
+  font-weight: 700;
+  font-style: normal;
 }
 
-@font-face {
-  font-family: "Space Mono";
-  src: url('./fonts/SpaceMonoNerdFontMono-Regular.ttf');
-}
-
-@font-face {
-  font-family: '3270';
-  src: url('./fonts/3270NerdFontMono-Regular.ttf');
-}
-
-@font-face {
-  font-family: '0xProto';
-  src: url('./fonts/0xProtoNerdFontMono-Regular.ttf');
-}
-
+/* CSS Variables */
 :root {
-  --black-text-90: #EEEEEE;
-  --gray: #ECDFCC;
-  --poppins: Poppins, 'sans-serif';
-  --play-fair: 'Martia', 'sans-serif';
-  --proto: '0xProto', 'sans-serif';
-  --space-mono: 'Space Mono', 'monospace';
-  --bg: #0C0C0C;
+  /* Colors - Dark Mode Default */
+  --bg-main: #0a0a0a; 
+  --card-bg: #171717;
+  --card-dark: #171717;
+  --text-primary: #ededed;
+  --text-secondary: #a1a1aa;
+  --text-muted: #525252;
+  --accent-green: #22c55e;
+  --border-color: #262626;
+  --card-label-bg: rgba(255, 255, 255, 0.03);
+  
+  /* Typography - Google Sans */
+  --font-sans: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+  
+  /* Spacing */
+  --gap: 16px;
+  --radius: 24px;
+  --radius-sm: 12px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  
   scroll-behavior: smooth;
 }
 
-body {
-  overflow-x: hidden !important;
-  width: 100vw;
-  background-position: center;
-  background-size: cover;
-  background-color: var(--bg);
-  background-repeat: no-repeat;
-  cursor: none;
-}
-
-* {
-  border: 0;
-  margin: 0;
+/* Reset */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
   text-decoration: none;
+  color: inherit;
 }
 
-.wrapper {
-  padding: 0 1.8rem;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-.char {
+/* Bento Grid Layout */
+.bento-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* Base Card Styles */
+.bento-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: none;
+}
+
+.bento-card--dark {
+  background: var(--card-dark);
+  color: white;
+}
+
+/* Card Label/Tag - pill style */
+.card-label {
   display: inline-block;
-  transform: translateY(115px);
-  transition: transform 0.5s;
-  -webkit-transition: transform 0.5s;
-  -moz-transition: transform 0.5s;
-  -ms-transition: transform 0.5s;
-  -o-transition: transform 0.5s;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  background: transparent;
 }
 
-.nav-bar span:hover,
-.nav-bar a:hover {
-  cursor: pointer;
+/* Status Indicator */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
-.projects-container {
-  scroll-snap-type: x mandatory;
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--accent-green);
 }
 
-.projContainer {
-  scroll-snap-align: start;
+/* Location Badge */
+.location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text-secondary);
 }
 
-.heading h2 {
-  font-family: var(--play-fair);
+.location-badge svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+/* Experience Item */
+.experience-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 2rem;
-  padding: 1rem 0;
-  color: var(--black-text-90);
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.wrapper {
+.experience-item:first-child {
+  padding-top: 0;
+}
+
+.experience-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.experience-info {
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  gap: 2rem;
-  padding: 0 1.8rem 2rem 1.8rem;
+  align-items: center;
+  gap: 14px;
 }
 
-article {
-  font-size: small;
-  line-height: 1.8rem;
+.experience-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--bg-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 }
 
-
-
-.red-circle {
-  width: 1.5rem;
-  height: 1.5rem;
-  background: linear-gradient(135deg, #ff4646 0%, #ff7676 100%);
-  border-radius: 50%;
-  margin-right: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(255, 70, 70, 0.1), 0 2px 4px -1px rgba(255, 70, 70, 0.06);
+.experience-details h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: var(--text-primary);
 }
 
-@media screen and (min-width: 550px) {
-  .wrapper {
-    max-width: 650px;
-  }
-
-  .heading h2 {
-    font-size: 3rem;
-  }
-
+.experience-details p {
+  font-size: 13px;
+  color: var(--text-muted);
 }
 
-@media screen and (min-width: 1024px) {
+.experience-date {
+  font-size: 13px;
+  color: var(--text-muted);
+}
 
-  .wrapper {
-    max-width: 1000px;
-    padding: 0 1.8rem 00% 1.8rem;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
+/* Tools Grid */
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 
+.tool-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Contact Info */
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.contact-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.contact-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.contact-value {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Social Card Link */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
 }

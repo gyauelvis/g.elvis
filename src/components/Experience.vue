@@ -63,7 +63,7 @@
 
 .hyphen {
     display: none;
-  }
+}
 
 .green-circle {
     width: 1rem;
