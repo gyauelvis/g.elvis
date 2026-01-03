@@ -40,7 +40,7 @@ onMounted(() => {
 
     <div class="hero-content">
       <h1 class="hero-title">
-        Hello there! My name is<br />
+        Hello there! My name is
         Elvis and I code, design and teach.
       </h1>
     </div>
