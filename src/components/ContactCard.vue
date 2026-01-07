@@ -1,3 +1,12 @@
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const handleBlogClick = () => {
+  router.push('/blog')
+}
+</script>
 <template>
   <div class="contact-card bento-card">
     <span class="card-label">Contact</span>
@@ -18,6 +27,12 @@
         <span class="contact-label">Read My Blogs</span>
         <span class="contact-dots"></span>
         <span class="contact-value"><a target="_blank" href="https://dev.to/gyauelviss">Read</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">My Learnings</span>
+        <span class="contact-dots"></span>
+        <!-- redirect to blog page -->
+        <span class="contact-value"><a target="_blank" @click="handleBlogClick">Check it out</a></span>
       </div>
     </div>
   </div>
