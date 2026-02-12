@@ -125,6 +125,241 @@ To store a single bit from first principles:
 By connecting these three components cleverly, we've built computer memory at its most fundamental level.
 
     `.trim()
+  },
+  {
+    slug: 'machine-language-how-computers-understand-instructions',
+    title: 'Machine Language: How Computers Understand Instructions',
+    tag: 'Hardware',
+    date: 'February 12, 2026',
+    content: `
+## Why Are Computers So Flexible?
+
+Most machines do a single thing. A toaster toasts. A fan blows air. But a computer? It can browse the web, edit videos, run games, control robots (all on the same hardware).
+
+**So how is this possible?**
+
+---
+
+## The Theory: Universal Turing Machine
+
+The answer lies in **universality**. In the 1930s, Alan Turing proposed the Universal Turing Machine (the theoretical blueprint for all modern computers).
+
+**The key idea:** Any computation can be performed by a machine that simply reads a series of 0s and 1s and follows instructions.
+
+Here's how it works:
+1. At any given moment, the machine looks at a single bit (0 or 1)
+2. Based on an instruction, it might change that 0 to a 1
+3. Then jump to a different state (say, instruction #56)
+4. Eventually, it reaches a halt state
+5. After halting, the final pattern of 0s and 1s represents the answer
+
+**This is the foundation of all computation.**
+
+---
+
+## The Practice: Von Neumann Architecture
+
+Alan Turing gave us the theory. **John von Neumann made it practical.**
+
+Von Neumann's breakthrough insight: **Memory can store both data AND instructions (the program itself).**
+
+This is called the **Von Neumann Architecture**, and it's what powers every computer you use today.
+
+**The magic:** Hardware stays fixed, but software (instructions and data stored in memory) can change. Change the software, and the computer does something completely different.
+
+---
+
+## How Does Fixed Hardware Perform Different Tasks?
+
+The answer: **We store different instructions in memory.**
+
+Instructions are just sequences of 0s and 1s. When the CPU executes them, it performs different operations based on what's stored.
+
+---
+
+## Elements of an Instruction
+
+Every machine instruction must specify three things:
+
+### 1. The Operation
+What should the computer do?
+- Example: \`00101\` might mean "add two numbers"
+- Other operations: subtract, multiply, AND, OR, jump to a different instruction, etc.
+
+### 2. Program Counter
+After executing the current instruction, where do we go next?
+- Usually: the next instruction in sequence
+- Sometimes: jump to a different location (for loops, if-statements, etc.)
+
+### 3. Addressing
+Where do we find the data to operate on?
+- Which memory location holds the numbers we want to add?
+- This is called **addressing**
+
+---
+
+## The Problem: Machine Language is Inconvenient for Humans
+
+Machine language is the **only** language computers truly understand. But it's horrible for humans to work with.
+
+**Example of raw machine code:**
+\`\`\`
+0100010 0011 0010
+\`\`\`
+
+What does this mean? Who knows?
+
+**Solution:** We write in high-level languages (Python, Java, C++), then **compile** them into machine language.
+
+---
+
+## Mnemonics: Making Machine Code Readable
+
+Instead of writing raw binary, we use **mnemonics** (human-readable symbols for instructions).
+
+**Machine code:**
+\`\`\`
+0100010 0011 0010
+\`\`\`
+
+**Assembly (with mnemonics):**
+\`\`\`
+ADD R3, R2
+\`\`\`
+
+This means: "Add the value in Register 3 to the value in Register 2."
+
+Much easier to understand! The assembler then translates this back to binary for the computer.
+
+---
+
+## Machine Language: The Hardware-Software Interface
+
+Machine language is the **most important interface between hardware and software** because it allows us to specify exactly what we want the hardware to do.
+
+### Variations Between Machine Languages
+
+Different computer architectures have different machine languages. They may differ in:
+
+**1. Richness of operations**
+- Some include division as a basic operation
+- Others require software to implement division using simpler operations
+
+**2. Data width**
+- Some handle 64-bit operations natively
+- Others work in 8-bit or 16-bit chunks
+
+**3. Data types**
+- Some have native support for floating-point numbers
+- Others require software libraries to handle decimals
+
+**Key principle:** Machine language and hardware are in close correspondence. The machine language reflects what the hardware can actually do.
+
+---
+
+## What Every Machine Language Must Specify
+
+Regardless of variations, every machine language must define:
+
+### 1. Operations
+What can the CPU do?
+- **Arithmetic:** Add, subtract, multiply, divide
+- **Logical:** AND, OR, NOT, XOR
+- **Flow control:** GOTO, conditional jumps, function calls
+
+### 2. Operands
+What data do we operate on?
+
+### 3. Addressing
+How do we find the data we want to operate on?
+
+---
+
+## The Addressing Challenge
+
+Addressing creates two major problems:
+
+### Problem 1: Large Memory Requires Large Addresses
+
+If we just want to add two numbers, we might have to specify their full memory addresses:
+
+\`\`\`
+ADD [0x7FFFFFFF], [0x7FFFFFFE]
+\`\`\`
+
+Those long addresses make instructions bulky and slow.
+
+### Problem 2: Transporting Data Takes Time
+
+Fetching data from far-away memory locations is slow. The farther from the CPU, the longer it takes.
+
+---
+
+## The Solution: Memory Hierarchy
+
+To solve these problems, we use a **memory hierarchy** (arranging memory from fastest to slowest).
+
+**Fastest to Slowest (Closest to CPU to Farthest from CPU):**
+
+1. **Registers** (fastest, smallest, closest to CPU)
+2. **Cache** (fast, small)
+3. **Main Memory (RAM)** (medium speed, medium size)
+4. **Disk** (slowest, largest, farthest from CPU)
+
+**The strategy:**
+- Keep frequently-used data in fast, small memory (registers)
+- Keep less-used data in slower, larger memory (RAM, disk)
+- Fast memory doesn't need large addresses (fewer bits needed)
+
+---
+
+## Registers: The CPU's Closest Memory
+
+Registers are tiny, super-fast memory locations inside the CPU itself. They can be used in two main ways:
+
+### 1. Data Registers
+Store actual values for computation.
+
+**Example:**
+\`\`\`
+ADD R1, R2
+\`\`\`
+- Take the value in Register 1
+- Add it to the value in Register 2
+- Store the result in R2 (if that's what our machine language specifies)
+
+### 2. Address Registers
+Store memory addresses (pointers).
+
+**Example:**
+\`\`\`
+ADD R1, @A
+\`\`\`
+Where \`A\` is an address register:
+1. Go to register \`A\`
+2. Read the value there (which is a memory address)
+3. Go to that address in main memory
+4. Add the value found there to R1
+5. Store the result at that same memory address
+
+This is called **indirect addressing** (the register holds an address, not the data itself).
+
+---
+
+## Summary
+
+**Machine language is:**
+- The only language computers truly understand
+- The bridge between hardware and software
+- Tedious for humans (so we use assembly and high-level languages)
+
+**Key concepts:**
+- **Universality:** Any computation = series of 0s and 1s + instructions
+- **Von Neumann Architecture:** Memory stores both data and programs
+- **Instructions specify:** Operation + Addressing + Program flow
+- **Memory hierarchy:** Solves speed and addressing problems
+- **Registers:** Fastest memory, closest to CPU, used for data and addresses
+    `.trim()
   }
 ]
 
