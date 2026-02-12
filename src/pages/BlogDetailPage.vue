@@ -17,6 +17,8 @@ const renderContent = (content) => {
     if (!content) return ''
 
     let html = content
+        // Images - must be before other replacements
+        .replace(/!\[([^\]]*?)\]\(([^)]+)\)/g, '<figure class="blog-image"><img src="$2" alt="$1" /><figcaption>$1</figcaption></figure>')
         // Headers
         .replace(/^### (.+)$/gm, '<h3>$1</h3>')
         .replace(/^## (.+)$/gm, '<h2>$1</h2>')
@@ -222,6 +224,27 @@ const renderContent = (content) => {
     border: none;
     border-top: 1px solid var(--border-color);
     margin: 40px 0;
+}
+
+.article-content :deep(.blog-image) {
+    margin: 32px 0;
+    text-align: center;
+}
+
+.article-content :deep(.blog-image img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    padding: 16px;
+}
+
+.article-content :deep(.blog-image figcaption) {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-style: italic;
 }
 
 .not-found {

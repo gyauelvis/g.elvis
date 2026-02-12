@@ -36,7 +36,7 @@ const goHome = () => {
                         <span class="blog-tag">{{ blog.tag }}</span>
                         <span class="blog-date">{{ blog.date }}</span>
                     </div>
-                    <div class="blog-line"></div>
+                    <!-- <div class="blog-line"></div> -->
                 </article>
             </div>
         </div>

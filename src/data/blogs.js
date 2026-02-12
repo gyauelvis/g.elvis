@@ -17,6 +17,114 @@ So I used two \`Or8Way\` chips, one for bits 0–7 and another for bits 8–15. 
 
 That moment felt really satisfying. It reminded me that hardware design often rewards simple thinking over clever tricks, and that sometimes the cleanest solution is just going back to basic logic and trusting it to do the job.
     `.trim()
+  },
+  {
+    slug: 'understanding-how-computers-store-a-single-bit',
+    title: 'Understanding How Computers Store a Single Bit (From First Principles)',
+    tag: 'Hardware',
+    date: 'February 2, 2026',
+    content: `
+This article explains how computer memory stores a single bit, built from first principles. Note: everything discussed here refers to the **logical principles** required to realize this, not the physical implementation.
+
+## Our Simple Goal
+
+We want to build a **one-bit register** that:
+- Holds a single value forever
+- Changes only when we give it a new input
+- Holds that new value forever until we tell it to change again
+
+Before we can fully understand how to build this, let's talk about three key components: **Multiplexers (Mux)**, **Data Flip-Flops (DFF)**, and the **Clock (CLK)**.
+
+---
+
+## The Building Blocks
+
+### 1. Multiplexer (Mux)
+
+The job of a Mux is simple: give it multiple inputs and a selector bit. Based on the selector, it chooses one of the inputs and outputs it.
+
+**In other words:** We give it multiple options and selection criteria. Based on the criteria, it picks one option as the output.
+
+---
+
+### 2. Clock (CLK)
+
+If you know gates like AND, OR, NAND, and Mux, you know they use **combinatorial logic**. This means there's no sense of time—an input produces an output instantaneously (at least in theory).
+
+In reality, we know this isn't true. Operations take time.
+
+When building computers from first principles, the **Clock gives us a sense of time**. It provides a train of cycles within which sequences of tasks take place.
+
+---
+
+### 3. Data Flip-Flop (DFF)
+
+The DFF helps us **hold a value from one clock cycle to the next**. It gives us a basic sense of storage in computers.
+
+Without the DFF, values would simply disappear in the next clock cycle. The DFF prevents this by **remembering** the value.
+
+**Key insight:** If we somehow connect the output of the DFF back to its input, it will hold that value forever.
+
+---
+
+## But That's Not Enough
+
+Holding a value forever isn't our goal. We want to **change the value** when needed.
+
+Specifically:
+- When \`load = 1\`: Feed the new input to the DFF
+- When \`load = 0\`: Keep the DFF holding its current value
+
+**In other words:** Based on the value of \`load\`, we want to choose either:
+1. The new input, OR
+2. The output from the previous cycle
+
+Wait... doesn't this sound familiar?
+
+**A logic gate that selects one input out of two based on certain criteria is... a Mux!**
+
+---
+
+## The Solution
+
+Here's how we build our one-bit register:
+
+1. Connect a **Mux** to the input of a **DFF**
+2. Connect both the **new input** and the **DFF's output** to the Mux's two input channels
+3. Connect the **load bit** to the Mux's selector
+
+**Now:**
+- When \`load = 1\`: Mux selects the new input → DFF stores it
+- When \`load = 0\`: Mux selects the previous output → DFF continues holding it
+
+Perfect! We've built a one-bit register from first principles.
+
+---
+
+## Implementation Note (Nand to Tetris)
+
+When writing the HDL code for this in Nand to Tetris, you'll hit a constraint: **you can't directly use \`out\` as an input**.
+
+**The workaround:**
+1. Save the DFF's output to a temporary variable (e.g., \`temp\`)
+2. Connect \`temp\` to the Mux's input interface
+3. OR \`temp\` with \`false\` and assign that to the final output
+
+This satisfies the HDL constraints while achieving the same logical behavior.
+
+---
+
+## Summary
+
+To store a single bit from first principles:
+- **Mux** lets us choose between new input or previous value
+- **DFF** holds the value across clock cycles
+- **Clock** gives us a sense of time
+- **Load bit** controls when we update vs. hold
+
+By connecting these three components cleverly, we've built computer memory at its most fundamental level.
+
+    `.trim()
   }
 ]
 
