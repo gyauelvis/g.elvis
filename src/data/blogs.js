@@ -360,6 +360,218 @@ This is called **indirect addressing** (the register holds an address, not the d
 - **Memory hierarchy:** Solves speed and addressing problems
 - **Registers:** Fastest memory, closest to CPU, used for data and addresses
     `.trim()
+  },
+  {
+    slug: 'deep-down-to-bits-how-computers-handle-input-and-output',
+    title: 'Deep Down to Bits: How Computers Handle Input and Output',
+    tag: 'Hardware',
+    date: 'February 23, 2026',
+    content: `
+Every computer we use has fancy input and output devices (usually called **peripheral devices** because they exist outside the main computer unit).
+
+Your PC has:
+- **Inputs:** Keyboard, mouse, camera, microphone
+- **Outputs:** Screen, speakers, printers
+
+But have you ever wondered: **How does the computer actually manipulate these devices at the lowest level?** Deep down in the architecture, when everything is just 0s and 1s?
+
+For developers using high-level languages, we have libraries and frameworks that handle this for us. But what if you had to do forensics work and go deep down to just bits?
+
+Let's find out.
+
+---
+
+## The Screen: Not What You Think It Is
+
+To your computer, your monitor is not the fancy graphics you see. **It's just a matrix with rows and columns.**
+
+The intersection of a row and column forms a **pixel** that can be set to 1 or 0.
+
+Think of a monochrome screen with a white background and black text:
+- **1** means the pixel is lit (shows black)
+- **0** means the pixel is off (shows white/nothing)
+
+**Example:** The Hack computer (from Nand to Tetris) assumes a screen of:
+- **256 rows**
+- **512 columns**
+
+That's 256 × 512 = **131,072 pixels** total.
+
+---
+
+## What is a Screen Memory Map?
+
+The **screen memory map** is a dedicated chunk of your computer's memory that represents the entire screen.
+
+**Here's how it works:**
+
+The display screen **refreshes many times per second** (typically 60+ times) to show whatever is stored in the screen memory map.
+
+**As a low-level programmer, all you have to do is:**
+1. Write values to the screen memory map
+2. The screen automatically updates to reflect those values
+
+**No fancy graphics libraries needed.** Just direct memory manipulation.
+
+---
+
+## The Problem: 2D Screen, 1D Memory
+
+Here's the challenge:
+- **The screen is two-dimensional** (rows and columns)
+- **Memory is one-dimensional** (a linear sequence of addresses)
+
+**How do we map a 2D screen to 1D memory?**
+
+---
+
+## The Solution: Row-Major Mapping
+
+Let's work through the Hack computer example:
+
+### Step 1: Calculate Total Memory Needed
+
+The screen is 256 rows × 512 columns = **131,072 pixels**.
+
+The Hack computer uses **16-bit words** (each word holds 16 bits/pixels).
+
+**How many words do we need?**
+\`\`\`
+131,072 pixels ÷ 16 bits per word = 8,192 words
+\`\`\`
+
+So the screen memory map needs **8,192 words** (or 8K words).
+
+---
+
+### Step 2: Map Rows to Memory
+
+The screen has **512 pixels per row**.
+
+Since each word holds 16 pixels:
+\`\`\`
+512 pixels per row ÷ 16 pixels per word = 32 words per row
+\`\`\`
+
+**The mapping:**
+- The **first 32 words** in memory represent the **first row** of the display
+- The **next 32 words** represent the **second row**
+- And so on...
+
+---
+
+## Finding the Right Memory Address
+
+Now for the practical part: **How do I find the memory address to manipulate a specific pixel at row \`r\` and column \`c\`?**
+
+### Step 1: Find the Row Block
+
+Each row consists of 32 words. To find which block of words represents row \`r\`:
+
+\`\`\`
+Row offset = r × 32
+\`\`\`
+
+This gives us the starting word address for that row.
+
+---
+
+### Step 2: Find the Word Within the Row
+
+Within each row, there are 32 words, each holding 16 pixels.
+
+To find which word contains column \`c\`:
+
+\`\`\`
+Word offset = c ÷ 16  (integer division)
+\`\`\`
+
+**Why integer division?**
+- Columns 0-15 are in word 0
+- Columns 16-31 are in word 1
+- Columns 32-47 are in word 2
+- And so on...
+
+---
+
+### Step 3: Add the Screen Memory Base Address
+
+The screen memory map doesn't start at address 0. It has an offset.
+
+For the Hack computer, the screen memory map starts at address **16384**.
+
+**Final formula:**
+\`\`\`
+Address = 16384 + (r × 32) + (c ÷ 16)
+\`\`\`
+
+---
+
+## Example: Writing to Pixel at Row 10, Column 50
+
+Let's say we want to turn on the pixel at row 10, column 50:
+
+\`\`\`
+Address = 16384 + (10 × 32) + (50 ÷ 16)
+        = 16384 + 320 + 3
+        = 16707
+\`\`\`
+
+So we write to memory address **16707** to manipulate that pixel.
+
+**But wait!** Column 50 ÷ 16 = 3 with a remainder of 2. That means:
+- We write to word at address 16707
+- We need to set bit #2 within that word (since 50 = 16×3 + 2)
+
+---
+
+## The Keyboard: Input Through Memory
+
+Just like the screen, the keyboard also uses a **memory map**.
+
+### How It Works
+
+There's a dedicated memory location called the **keyboard memory map**. This single word represents the key currently being pressed.
+
+**Standard key codes:**
+- Each key has a standard bit value (ASCII or EBCDIC)
+- Example: \`K\` = 75, \`Space\` = 32
+
+**When you press a key:**
+1. Your keyboard cable (or wireless signal) transfers the key's code
+2. The code is converted to binary
+3. The binary value is written to the keyboard memory map
+4. Your program reads that memory location to see which key was pressed
+
+**When no key is pressed:**
+The keyboard memory map holds 0.
+
+---
+
+## Why This Matters
+
+Understanding memory maps teaches you:
+
+1. **How operating systems work** (they manage these memory maps)
+2. **How device drivers work** (they translate high-level commands to memory writes)
+3. **How graphics rendering works** (drawing is just writing patterns to screen memory)
+4. **How embedded systems work** (IoT devices use memory-mapped I/O extensively)
+
+**This is the foundation of all computer I/O.** Everything else is just abstraction built on top of this simple concept.
+
+---
+
+## Summary
+
+**Key concepts:**
+- **Screen memory map:** A chunk of memory that represents every pixel on the screen
+- **2D to 1D mapping:** Rows are laid out sequentially in memory (row-major order)
+- **Address calculation:** \`Base + (row × words_per_row) + (column ÷ bits_per_word)\`
+- **Keyboard memory map:** A single memory location holding the code of the currently pressed key
+- **Memory-mapped I/O:** All peripheral devices are controlled by reading/writing memory
+
+**Next time:** We'll write actual Hack assembly code to draw shapes on the screen using these memory maps.
+    `.trim()
   }
 ]
 
