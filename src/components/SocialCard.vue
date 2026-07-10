@@ -55,7 +55,14 @@ img {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.social-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.95) 100%);
 }
 
 .social-image img {
@@ -63,8 +70,8 @@ img {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.6;
-  filter: grayscale(20%) contrast(1.1);
+  opacity: 0.5;
+  filter: grayscale(20%) contrast(1.1) brightness(0.85);
 }
 
 .social-footer {

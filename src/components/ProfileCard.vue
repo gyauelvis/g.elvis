@@ -1,5 +1,5 @@
 <script setup>
-import profileImage from '../assets/img/gyauelvis.png'
+import profileImage from '../assets/img/gyauelvis-profile.jpg'
 </script>
 
 <template>

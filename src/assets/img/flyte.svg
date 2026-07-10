@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <circle cx="16" cy="16" r="16" fill="#0F1A2E"/>
+  <!-- Arms -->
+  <g stroke="#FF6B00" stroke-linecap="round" stroke-width="2">
+    <line x1="16" y1="16" x2="23.4" y2="8.6"/>
+    <line x1="16" y1="16" x2="8.6" y2="8.6"/>
+    <line x1="16" y1="16" x2="8.6" y2="23.4"/>
+    <line x1="16" y1="16" x2="23.4" y2="23.4"/>
+  </g>
+  <!-- Rotor discs -->
+  <ellipse cx="23.4" cy="8.6" rx="3.5" ry="1.2" fill="#FF6B00" opacity="0.85">
+    <animateTransform attributeName="transform" type="rotate"
+      from="0 23.4 8.6" to="360 23.4 8.6" dur="0.3s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="8.6" cy="8.6" rx="3.5" ry="1.2" fill="#FF6B00" opacity="0.85">
+    <animateTransform attributeName="transform" type="rotate"
+      from="0 8.6 8.6" to="360 8.6 8.6" dur="0.3s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="8.6" cy="23.4" rx="3.5" ry="1.2" fill="#FF6B00" opacity="0.85">
+    <animateTransform attributeName="transform" type="rotate"
+      from="0 8.6 23.4" to="360 8.6 23.4" dur="0.3s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="23.4" cy="23.4" rx="3.5" ry="1.2" fill="#FF6B00" opacity="0.85">
+    <animateTransform attributeName="transform" type="rotate"
+      from="0 23.4 23.4" to="360 23.4 23.4" dur="0.3s" repeatCount="indefinite"/>
+  </ellipse>
+  <!-- Scan sweep wedge (rotates) -->
+  <g style="transform-origin: 16px 16px">
+    <path d="M16,16 L16,3 A13,13 0 0,1 24.2,19.5 Z"
+      fill="rgba(255,107,0,0.25)" stroke="#FF6B00" stroke-width="0.5">
+      <animateTransform attributeName="transform" type="rotate"
+        from="0 16 16" to="360 16 16" dur="2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  <!-- Body -->
+  <rect x="12.5" y="12.5" width="7" height="7" rx="2" fill="#FF6B00"/>
+  <!-- Lens -->
+  <circle cx="16" cy="16" r="2" fill="#0F1A2E"/>
+  <circle cx="16" cy="16" r="1" fill="#06B6D4"/>
+</svg>

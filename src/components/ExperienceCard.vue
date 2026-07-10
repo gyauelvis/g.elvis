@@ -9,7 +9,10 @@
             <img :src="job.logo" :alt="job.company" class="company-logo-img" />
           </div>
           <div class="experience-details">
-            <h4>{{ job.company }}</h4>
+            <h4>
+              <a v-if="job.url" :href="job.url" target="_blank" rel="noopener" class="company-link">{{ job.company }}</a>
+              <template v-else>{{ job.company }}</template>
+            </h4>
             <p>{{ job.role }}</p>
           </div>
         </div>
@@ -25,13 +28,14 @@ import { h } from 'vue'
 // Import logos
 import arnsonLogo from '../assets/img/arnson-innovate.png'
 import kwekuLogo from '../assets/img/kweku-tech.png'
-import n2tLogo from '../assets/img/nand-to-tetris.png'
+import flyteLogo from '../assets/img/flyte.svg'
 
 const experiences = [
   {
     company: 'Arnson Innovate',
     role: 'STEM Project Lead',
     period: 'Oct 2022 - Present',
+    url: 'https://arnsoninnovate.com',
     bgColor: '#ffffff', // Use white background for logos
     logo: arnsonLogo
   },
@@ -39,15 +43,17 @@ const experiences = [
     company: 'Kweku Tech',
     role: 'Community Manager',
     period: 'Oct 2025 - Present', // Note: Date seems future, keeping as per user input
+    url: 'https://kweku.tech',
     bgColor: '#ffffff',
     logo: kwekuLogo
   },
   {
-    company: 'Learning How To Build A Complete Computer',
-    role: 'Nand to Tetris',
-    period: '2023 - Present',
+    company: 'Building Flyte',
+    role: 'Founder',
+    period: 'April 2026 - Present',
+    url: 'https://flyteblocks.com',
     bgColor: '#ffffff',
-    logo: n2tLogo
+    logo: flyteLogo
   }
 ]
 </script>
@@ -130,6 +136,17 @@ const experiences = [
   font-weight: 600;
   margin-bottom: 4px;
   color: var(--text-primary);
+}
+
+.company-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.company-link:hover {
+  color: var(--accent-color, #FF6B00);
+  text-decoration: underline;
 }
 
 .experience-details p {
